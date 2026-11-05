@@ -1,6 +1,7 @@
 @tool
 extends Node3D
 
+@export var ingredient_scene: PackedScene
 @export var list: IngredientList
 var stack: Array[Node3D]
 
@@ -9,7 +10,8 @@ var stack: Array[Node3D]
 func _ready() -> void:
 	for entry in list.list:
 		for i in range(ingredient_repeat):
-			var scene = entry.scene.instantiate()
+			var scene = ingredient_scene.instantiate() as Ingredient3D
+			scene.ingredient = entry
 			add_child(scene)
 			stack.append(scene)
 

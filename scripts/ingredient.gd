@@ -10,5 +10,6 @@ enum IngredientType {
 }
 
 @export var type: IngredientType
-@export var scene: PackedScene
+@export var mesh: Mesh
+@export var color: Color
 @export var height: float

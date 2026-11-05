@@ -1,44 +1,49 @@
 [gd_resource type="Resource" script_class="IngredientList" format=3 uid="uid://geomke0harrb"]
 
 [ext_resource type="Script" uid="uid://dtttoqygyksym" path="res://scripts/ingredient.gd" id="1_7n0sh"]
-[ext_resource type="PackedScene" uid="uid://cpf2rlrmnyv3d" path="res://resource/top_bun.tscn" id="2_k7k3t"]
-[ext_resource type="PackedScene" uid="uid://vn5xqs01afeo" path="res://resource/bun.tscn" id="3_3oyyy"]
-[ext_resource type="PackedScene" uid="uid://c2wc8dlp5fhfv" path="res://resource/patty.tscn" id="4_lnr33"]
-[ext_resource type="PackedScene" uid="uid://dubyfttxba6fk" path="res://resource/cheese.tscn" id="5_6gqlt"]
-[ext_resource type="PackedScene" uid="uid://di2o62dk66kr4" path="res://resource/lettuce.tscn" id="6_wd0xj"]
+[ext_resource type="ArrayMesh" uid="uid://bkdh883u76afo" path="res://meshes/bun.tres" id="2_mmdl4"]
+[ext_resource type="ArrayMesh" uid="uid://ba3p4ggx16mbl" path="res://meshes/patty.tres" id="3_3oyyy"]
+[ext_resource type="ArrayMesh" uid="uid://dwifxqjqf0mr4" path="res://meshes/cheese.tres" id="4_lnr33"]
+[ext_resource type="ArrayMesh" uid="uid://bo64amxnv85sw" path="res://meshes/lettuce.tres" id="5_6gqlt"]
+[ext_resource type="ArrayMesh" uid="uid://qyb62xqoy0qp" path="res://meshes/topbun.tres" id="6_wd0xj"]
 [ext_resource type="Script" uid="uid://bwaghel027jgw" path="res://scripts/ingredient_list.gd" id="7_3oyyy"]
 
 [sub_resource type="Resource" id="Resource_6j60g"]
 script = ExtResource("1_7n0sh")
-scene = ExtResource("3_3oyyy")
+mesh = ExtResource("2_mmdl4")
+color = Color(0.7745799, 0.4537421, 0.26065618, 1)
 height = 1.03
 metadata/_custom_type_script = "uid://dtttoqygyksym"
 
 [sub_resource type="Resource" id="Resource_nkgm0"]
 script = ExtResource("1_7n0sh")
 type = 1
-scene = ExtResource("4_lnr33")
+mesh = ExtResource("3_3oyyy")
+color = Color(0.38049462, 0.104593955, 0.08972133, 1)
 height = 0.75
 metadata/_custom_type_script = "uid://dtttoqygyksym"
 
 [sub_resource type="Resource" id="Resource_qibbp"]
 script = ExtResource("1_7n0sh")
 type = 2
-scene = ExtResource("5_6gqlt")
+mesh = ExtResource("4_lnr33")
+color = Color(0.7227823, 0.5113801, 0.009378758, 1)
 height = 0.28
 metadata/_custom_type_script = "uid://dtttoqygyksym"
 
 [sub_resource type="Resource" id="Resource_c747x"]
 script = ExtResource("1_7n0sh")
 type = 4
-scene = ExtResource("6_wd0xj")
+mesh = ExtResource("5_6gqlt")
+color = Color(0.49019608, 0.6156863, 0.13333334, 1)
 height = 0.3
 metadata/_custom_type_script = "uid://dtttoqygyksym"
 
 [sub_resource type="Resource" id="Resource_0cbxt"]
 script = ExtResource("1_7n0sh")
 type = 3
-scene = ExtResource("2_k7k3t")
+mesh = ExtResource("6_wd0xj")
+color = Color(0.7745799, 0.4537421, 0.26065618, 1)
 height = 2.7
 metadata/_custom_type_script = "uid://dtttoqygyksym"
 
