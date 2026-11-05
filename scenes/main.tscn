@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://btpcjd5qqlwil"]
+
+[ext_resource type="PackedScene" uid="uid://dhspihmkhl3wy" path="res://scenes/customer_ui.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://df5448ngj2l8r" path="res://scripts/stacker.gd" id="2_sugp2"]
+[ext_resource type="Resource" uid="uid://geomke0harrb" path="res://resource/ingredients.tres" id="3_sugp2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jyhfs"]
+viewport_path = NodePath("TextureViewport")
+
+[node name="Node3D" type="Node3D" unique_id=2128858654]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=256400655]
+transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.1736482, 0, -0.1736482, 0.9848078, 4.2692046, 4.4338617, 11.627956)
+fov = 76.14065
+
+[node name="TextureViewport" type="SubViewport" parent="." unique_id=1402110093]
+transparent_bg = true
+size = Vector2i(1000, 1000)
+
+[node name="VPUI" parent="TextureViewport" unique_id=1032065727 instance=ExtResource("2_0wfyh")]
+
+[node name="CustomerUI" type="Sprite3D" parent="." unique_id=1395720651]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 13.28491, 3.6351337, 1.2691603)
+billboard = 1
+texture = SubResource("ViewportTexture_jyhfs")
+
+[node name="BurgerRoot" type="Marker3D" parent="." unique_id=299636304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84671235, 0)
+gizmo_extents = 6.0
+script = ExtResource("2_sugp2")
+list = ExtResource("3_sugp2")
+ingredient_repeat = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1282806726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7407203, 2.7936897, 7.8729515)
+light_energy = 1.682
+light_indirect_energy = 0.0
+omni_range = 25.0
+omni_attenuation = 0.5

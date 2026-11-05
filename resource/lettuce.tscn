@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://di2o62dk66kr4"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1oa8osscf61x" path="res://meshes/lettuce.tres" id="1_fhwq7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tipki"]
+albedo_color = Color(0.49019608, 0.6156863, 0.13333334, 1)
+
+[node name="Lettuce" type="MeshInstance3D" unique_id=196263399]
+material_override = SubResource("StandardMaterial3D_tipki")
+mesh = ExtResource("1_fhwq7")

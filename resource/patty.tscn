@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c2wc8dlp5fhfv"]
+
+[ext_resource type="ArrayMesh" uid="uid://d0nvjw4pyiu4h" path="res://meshes/patty.tres" id="1_xa52o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tefeu"]
+albedo_color = Color(0.38049462, 0.104593955, 0.08972133, 1)
+
+[node name="Patty" type="MeshInstance3D" unique_id=686555465]
+material_override = SubResource("StandardMaterial3D_tefeu")
+mesh = ExtResource("1_xa52o")

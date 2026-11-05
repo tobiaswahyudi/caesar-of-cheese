@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dubyfttxba6fk"]
+
+[ext_resource type="ArrayMesh" uid="uid://dwifxqjqf0mr4" path="res://meshes/cheese.tres" id="1_0sey5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6xl0"]
+albedo_color = Color(0.7227823, 0.5113801, 0.009378758, 1)
+
+[node name="Cheese" type="MeshInstance3D" unique_id=168921656]
+material_override = SubResource("StandardMaterial3D_o6xl0")
+mesh = ExtResource("1_0sey5")
