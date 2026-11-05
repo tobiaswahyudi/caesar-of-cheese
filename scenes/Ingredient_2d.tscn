@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://2s881mr80vqj"]
+
+[ext_resource type="Script" uid="uid://cpeepgyf34ddk" path="res://scenes/ingredient_2d.gd" id="1_jatrk"]
+[ext_resource type="Resource" uid="uid://geomke0harrb" path="res://resource/ingredients.tres" id="2_21mlp"]
+[ext_resource type="PackedScene" uid="uid://vn5xqs01afeo" path="res://resource/ingredient_3d.tscn" id="3_j8igs"]
+[ext_resource type="ArrayMesh" uid="uid://bkdh883u76afo" path="res://meshes/bun.tres" id="4_t5en3"]
+[ext_resource type="Script" uid="uid://dtttoqygyksym" path="res://scripts/ingredient.gd" id="5_vwxrn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t5en3"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_t5en3"]
+
+[sub_resource type="Environment" id="Environment_vwxrn"]
+
+[sub_resource type="Environment" id="Environment_8wett"]
+
+[sub_resource type="World3D" id="World3D_ve8y2"]
+environment = SubResource("Environment_vwxrn")
+fallback_environment = SubResource("Environment_8wett")
+camera_attributes = SubResource("CameraAttributesPractical_t5en3")
+
+[sub_resource type="Resource" id="Resource_6j60g"]
+script = ExtResource("5_vwxrn")
+mesh = ExtResource("4_t5en3")
+color = Color(0.7745799, 0.4537421, 0.26065618, 1)
+height = 1.03
+metadata/_custom_type_script = "uid://dtttoqygyksym"
+
+[node name="Ingredient2d" type="TextureRect" unique_id=1250951743]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = SubResource("ViewportTexture_t5en3")
+expand_mode = 1
+script = ExtResource("1_jatrk")
+ingredient_list = ExtResource("2_21mlp")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=896034600]
+own_world_3d = true
+world_3d = SubResource("World3D_ve8y2")
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Ingredient3D" parent="SubViewport" unique_id=993628700 instance=ExtResource("3_j8igs")]
+ingredient = SubResource("Resource_6j60g")
+
+[node name="SVPCam" type="Camera3D" parent="SubViewport" unique_id=962681767]
+transform = Transform3D(0.8785181, -0.47678268, 0.029735835, 0.44321072, 0.8367196, 0.3216592, -0.17824209, -0.26940417, 0.9463883, 0, 2.8396645, 9.748)
+current = true
+fov = 49.217243
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=256958556]
+transform = Transform3D(0.54667, -0.8305543, -0.10644913, 0.3468146, 0.108874045, 0.9315933, -0.76214933, -0.5461922, 0.34756655, 0.25326538, 0.08300781, 0)
