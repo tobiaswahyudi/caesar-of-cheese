@@ -12,7 +12,11 @@ extends RigidBody3D
 @onready var collider: CollisionShape3D = $Collider
 var mesh_material: StandardMaterial3D
 
-var already_connected: bool = false
+# Controlled
+var selected: bool = false:
+	set(v):
+		selected = v
+		mesh_material.emission_enabled = v
 
 func _ready() -> void:
 	if ingredient == null:
@@ -24,16 +28,4 @@ func _ready() -> void:
 	
 	var collider_shape: CylinderShape3D = collider.shape.duplicate()
 	collider.shape = collider_shape
-	collider_shape.height = ingredient.height * 0.9 #magic number
-	
-	if already_connected:
-		return
-	already_connected = true
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
-
-func _on_mouse_entered():
-	mesh_material.emission_enabled = true
-
-func _on_mouse_exited():
-	mesh_material.emission_enabled = false
+	collider_shape.height = ingredient.height * 0.9 # magic number

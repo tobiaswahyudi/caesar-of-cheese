@@ -11,13 +11,20 @@ config_version=5
 [application]
 
 config/name="caesar-of-cheese"
+run/main_scene="uid://btpcjd5qqlwil"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
+Type="*uid://goqn27kgm16g"
 IngredientAutoload="*uid://dtttoqygyksym"
 IngredientListAutoload="*uid://bwaghel027jgw"
+Parser="*uid://b7gbv1mh548oa"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [physics]
 
