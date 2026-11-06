@@ -146,7 +146,7 @@ func check_rule_repeat(string: String, tgt_repeat: int) -> bool:
 	# print("Checking if ", string, " is ", first_part, " repeated x", tgt_repeat, " = ", all_good)
 	return all_good
 
-func do_rule_repeat(string: String, tgt_repeat: int) -> bool:
+func do_rule_repeat(string: String, tgt_repeat: int) -> String:
 	@warning_ignore("integer_division")
 	var tgt_len: int = len(string) / tgt_repeat
 	var first_part = string.substr(0, tgt_len)
@@ -197,6 +197,6 @@ func greedy_parse(string: String) -> BST:
 	var first = string.substr(0, min_split_idx)
 	var second = string.substr(min_split_idx)
 
-	print("Splitting ",string," as ",first," + ",second)
+	# print("Splitting ",string," as ",first," + ",second)
 		
 	return BSTSequence.new(string, [greedy_parse(first), greedy_parse(second)])
