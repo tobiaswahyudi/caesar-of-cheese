@@ -2,7 +2,7 @@
 - Terms
 	- tuple names
 		- 2 to 4: "Double", "Triple", Quadruple".
-		- Tuples 5 and above will be called "nx" (e.g "5x", "6x").
+		- Tuples 5 and above will be called "n-tuple".
         - 1-tuples do not receive a prefix.
     - Frequency
 		- 1 or <33%: "a bit of"
