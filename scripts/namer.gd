@@ -44,6 +44,9 @@ class BST:
 	func is_patty_sequence() -> bool:
 		return false
 
+	func is_cheese_sequence() -> bool:
+		return false
+
 class BSTIngredient extends BST:
 	func get_name() -> String:
 		var index = Type.IngredientLetter.find(substring)
@@ -57,6 +60,9 @@ class BSTIngredient extends BST:
 	func is_patty_sequence() -> bool:
 		return substring == Type.IngredientLetter[Ingredient.IngredientType.Patty]
 
+	func is_cheese_sequence() -> bool:
+		return substring == Type.IngredientLetter[Ingredient.IngredientType.Cheese]
+
 	func depth() -> int:
 		return 1
 
@@ -66,6 +72,8 @@ class BSTBurger extends BST:
 			return children[0].tuple_name + " Hamburger"
 		if children[0].is_patty_cheese_sequence():
 			return children[0].tuple_name + " Cheeseburger"
+		if children[0].is_cheese_sequence():
+			return children[0].tuple_name + " Cheese Sandwich"
 		return children[0].get_name() + " Burger"
 
 	func get_repr() -> String:
@@ -110,14 +118,39 @@ class BSTMultiple extends BST:
 	func is_patty_sequence() -> bool:
 		return children[0].is_patty_sequence()
 
+	func is_cheese_sequence() -> bool:
+		return children[0].is_cheese_sequence()
+
 var min_stack_depth_cache: Dictionary[String, int] = {}
 
+# Rules
 func check_rule_burger(string: String) -> bool:
 	return RegEx.create_from_string("^B.*B$").search(string) != null
 	
 func do_rule_burger(string: String) -> String:
 	return string.substr(1, len(string) - 2)
 
+func check_rule_repeat(string: String, tgt_repeat: int) -> bool:
+	var strlen = len(string)
+	if strlen % tgt_repeat != 0:
+		return false
+	var all_good: bool = true
+	@warning_ignore("integer_division")
+	var tgt_len: int = strlen / tgt_repeat
+	var first_part = string.substr(0, tgt_len)
+	for i in range(tgt_repeat - 1):
+		var next_part = string.substr(tgt_len * (i + 1), tgt_len)
+		# print("\tcompare", next_part, " vs ", first_part)
+		if next_part != first_part:
+			all_good = false
+	# print("Checking if ", string, " is ", first_part, " repeated x", tgt_repeat, " = ", all_good)
+	return all_good
+
+func do_rule_repeat(string: String, tgt_repeat: int) -> bool:
+	@warning_ignore("integer_division")
+	var tgt_len: int = len(string) / tgt_repeat
+	var first_part = string.substr(0, tgt_len)
+	return first_part
 
 func greedy_parse(string: String) -> BST:
 	# First check base cases
@@ -130,22 +163,12 @@ func greedy_parse(string: String) -> BST:
 
 	# Check repeats, start with the most first.
 	for tgt_repeat in range(4, 1, -1):
-		# print(string," w len ",strlen," check repeat x",tgt_repeat," do? ",strlen % tgt_repeat == 0)
-		if strlen % tgt_repeat == 0:
-			var all_good: bool = true
-			var tgt_len: int = strlen / tgt_repeat
-			var first_part = string.substr(0, tgt_len)
-			for i in range(tgt_repeat - 1):
-				var next_part = string.substr(tgt_len * (i + 1), tgt_len)
-				# print("\tcompare", next_part, " vs ", first_part)
-				if next_part != first_part:
-					all_good = false
-			# print("Checking if ", string, " is ", first_part, " repeated x", tgt_repeat, " = ", all_good)
-			if all_good:
-				var multiple_node = BSTMultiple.new(first_part, [greedy_parse(first_part)])
-				multiple_node.repeat_count = tgt_repeat
-				min_stack_depth_cache[string] = multiple_node.depth()
-				return multiple_node
+		if check_rule_repeat(string, tgt_repeat):
+			var first_part = do_rule_repeat(string, tgt_repeat)
+			var multiple_node = BSTMultiple.new(first_part, [greedy_parse(first_part)])
+			multiple_node.repeat_count = tgt_repeat
+			min_stack_depth_cache[string] = multiple_node.depth()
+			return multiple_node
 	# Otherwise its an "and" thingy.
 	# Try splitting it such that the depth is minimal
 	var min_split_depth: int = strlen * 10
