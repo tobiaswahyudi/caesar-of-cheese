@@ -1,0 +1,45 @@
+# Naming Rules
+- Terms
+	- tuple names
+		- 2 to 4: "Double", "Triple", Quadruple".
+		- Tuples 5 and above will be called "nx" (e.g "5x", "6x").
+        - 1-tuples do not receive a prefix.
+    - Frequency
+		- 1 or <33%: "a bit of"
+		- 5+ or >50%: "a lot of"
+		- in between: "some"
+        - Quantities that satisfy multiple frequency names may be resolved freely as the server's judgment.
+- Lettuce
+    - A stack with lettuce will be names with the following procedure:
+        - Record the number of lettuce -> V
+        - Remove the lettuce from the stack.
+        - Record the number of ingredients in the remaining stack -> R
+        - Determine the name of the remaining stack -> S
+		- The name of the original stack will be "S with n Lettuce"
+            - where n is the frequency term resolved with the quantity V or the ratio V/R.
+- Base cases: length 1 and 0
+	- An empty stack will be called "Nothing".
+    - For naming purposes, TopBun is considered equivalent to Bun.
+    - All single ingredient stacks will be named its single ingredient.
+	- Ingredients are: "Bun", "Patty", "Lettuce", "Cheese".
+- Base cases: Ubiquitous
+	- Stacks of the shape B P*n B will be called an "n-tuple Hamburger".
+	- Stacks of the shape B (PC)*n B or B (CP)*n B will be called an "n-tuple Cheeseburger".
+		- "n-tuple Cheeseburger"s do not allow mixed orders of Patty and Cheese. BPCCPB is not considered a "Double Cheeseburger".
+	- Stacks of the shape B C*n B will be called an "n-tuple Cheese Sandwich".
+		- It's tempting to have this supersede the "Cheese Burger" title. But it's not what customers expect a Cheeseburger to be.
+- Structural rules
+    - If a stack does not resolve into base cases, we apply structural rules. These may be applied in any order.
+        - Burger Mathematicians have proven that we can name any burger with these.
+        - However, 'bad names' may result. For more details on 'bad naming', consult the Extended Employee's Guide section 36.
+        - Remember that naming quality will reflect on employee performance reviews.
+	- we denote by "name(S)" the name of a stack S.
+	- A stack with the shape B S B is named a "name(S) Burger".
+	- A stack with the shape S*n is named an "n-tuple name(S)".
+	- A stack with the shape XY is named a "name(X) and name(Y)".
+
+# Serving Rules
+- the thing you serve must always be a burger or a sandwich.
+- If a frequency is not specified by the customer, quantity may be resolved freely as the server's judgment.
+- Customers must be satisfied!
+    - You may have to explain why a burger is named as such.
