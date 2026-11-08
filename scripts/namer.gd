@@ -1,5 +1,9 @@
 # This is a singleton. There may only be one oracle.
+# The file name is Namer but the singleton is called Parser
+# ye thats my fault and i torture only myself
 extends Node
+
+var unknown_bst_string: String = "???"
 
 class BST:
 	var substring: String
@@ -47,6 +51,44 @@ class BST:
 	func is_cheese_sequence() -> bool:
 		return false
 
+	func first_unresolved_child() -> BST:
+		# Yeah this will traverse the whole tree multiple times, which is not so good, but the tree size is 16 so it's fine for now
+		for c in children:
+			var c_unresolved = c.first_unresolved_child()
+			if c_unresolved != null:
+				return c_unresolved
+		return null
+
+	func resolve_first(emplace_bst: BST) -> void:
+		print("resolving me {0} with {1}".format([get_repr(), emplace_bst.get_repr()]))
+		for idx in len(children):
+			var c = children[idx]
+			if c.is_directly_unresolved():
+				print("child is directly unresolved. prev children, ", children)
+				children[idx] = emplace_bst
+				print("child has been directly resolved. new children, ", children)
+				return
+			var c_unresolved = c.first_unresolved_child()
+			if c_unresolved != null:
+				c.resolve_first(emplace_bst)
+
+	func is_directly_unresolved() -> bool:
+		# Equivalent to (self is BSTUnresolved)
+		return false
+
+class BSTUnresolved extends BST:
+	func get_name() -> String:
+		return Parser.unknown_bst_string
+
+	func get_repr() -> String:
+		return "?"
+
+	func first_unresolved_child() -> BST:
+		return self
+
+	func is_directly_unresolved() -> bool:
+		return true
+
 class BSTIngredient extends BST:
 	func get_name() -> String:
 		var index = Type.IngredientLetter.find(substring)
@@ -78,6 +120,9 @@ class BSTBurger extends BST:
 
 	func get_repr() -> String:
 		return "[" + children[0].get_repr() + "]"
+
+	func first_unresolved_child() -> BST:
+		return children[0].first_unresolved_child()
 
 class BSTSequence extends BST:
 	func get_name() -> String:
@@ -146,11 +191,23 @@ func check_rule_repeat(string: String, tgt_repeat: int) -> bool:
 	# print("Checking if ", string, " is ", first_part, " repeated x", tgt_repeat, " = ", all_good)
 	return all_good
 
-func do_rule_repeat(string: String, tgt_repeat: int) -> String:
+func do_rule_repeat(tgt_repeat: int, string: String) -> String:
 	@warning_ignore("integer_division")
 	var tgt_len: int = len(string) / tgt_repeat
 	var first_part = string.substr(0, tgt_len)
 	return first_part
+
+func check_rule_hamburger(string: String) -> bool:
+	return RegEx.create_from_string("^BP+B$").search(string) != null
+
+func check_rule_cheese_sandwich(string: String) -> bool:
+	return RegEx.create_from_string("^BC+B$").search(string) != null
+
+func check_rule_cheeseburger(string: String) -> bool:
+	return RegEx.create_from_string("^B(PC)+B$").search(string) != null || RegEx.create_from_string("^B(CP)+B$").search(string) != null
+
+func check_rule_lettuce(string: String) -> bool:
+	return RegEx.create_from_string("L").search(string) != null
 
 func greedy_parse(string: String) -> BST:
 	# First check base cases
@@ -159,12 +216,12 @@ func greedy_parse(string: String) -> BST:
 		return BSTIngredient.new(string, [])
 	if check_rule_burger(string):
 		var insides = do_rule_burger(string)
-		return BSTBurger.new(insides, [greedy_parse(insides)])
+		return BSTBurger.new(string, [greedy_parse(insides)])
 
 	# Check repeats, start with the most first.
 	for tgt_repeat in range(4, 1, -1):
 		if check_rule_repeat(string, tgt_repeat):
-			var first_part = do_rule_repeat(string, tgt_repeat)
+			var first_part = do_rule_repeat(tgt_repeat, string)
 			var multiple_node = BSTMultiple.new(first_part, [greedy_parse(first_part)])
 			multiple_node.repeat_count = tgt_repeat
 			min_stack_depth_cache[string] = multiple_node.depth()
@@ -200,3 +257,27 @@ func greedy_parse(string: String) -> BST:
 	# print("Splitting ",string," as ",first," + ",second)
 		
 	return BSTSequence.new(string, [greedy_parse(first), greedy_parse(second)])
+
+func do_one_step_ingredient(string: String) -> BST:
+	return BSTIngredient.new(string, [])
+
+# Handles hamburgers, cheeseburgers, cheese sandwiches.
+# Assumes it's checked already!!
+func do_resolve_base_burger(string: String) -> BST:
+	return greedy_parse(string)
+
+func do_one_step_burger(string: String) -> BST:
+	var insides = do_rule_burger(string)
+	return BSTBurger.new(insides, [BSTUnresolved.new(insides, [])])
+
+func do_one_step_repeat(tgt_repeat: int, string: String) -> BST:
+	var repeated = do_rule_repeat(tgt_repeat, string)
+	var multiple_node = BSTMultiple.new(string, [BSTUnresolved.new(repeated, [])])
+	multiple_node.repeat_count = tgt_repeat
+	return multiple_node
+
+func do_one_step_split(split_pos: int, string: String) -> BST:
+	# split_pos is the length of the first part = start index of second part
+	var stack_first = string.substr(0, split_pos)
+	var stack_second = string.substr(split_pos)
+	return BSTSequence.new(string, [BSTUnresolved.new(stack_first, []), BSTUnresolved.new(stack_second, [])])

@@ -1,0 +1,11 @@
+[gd_resource type="Theme" format=3 uid="uid://ct3uyhalnf088"]
+
+[ext_resource type="StyleBox" uid="uid://whyt18hphyb8" path="res://ui/button_stylebox_disabled.tres" id="1_lrrve"]
+[ext_resource type="StyleBox" uid="uid://cnmtghe5y88ua" path="res://ui/button_stylebox_hovered.tres" id="2_vofuh"]
+[ext_resource type="StyleBox" uid="uid://b4t7y1i1ljyp5" path="res://ui/button_stylebox_normal.tres" id="3_l4l2v"]
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/disabled = ExtResource("1_lrrve")
+Button/styles/hover = ExtResource("2_vofuh")
+Button/styles/normal = ExtResource("3_l4l2v")
