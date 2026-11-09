@@ -51,6 +51,8 @@ var img_path_map: Dictionary[String, String]
 
 var total_bst: Parser.BST
 
+var bst_history: Array[Parser.BST] = []
+
 var done_naming: bool:
 	get():
 		return current_stack == ""
@@ -79,7 +81,7 @@ func eval_button_state() -> void:
 	burger_button.disabled = done_naming or is_splitting or not Parser.check_rule_burger(current_stack)
 
 	initiate_split_button.disabled = done_naming or is_splitting
-	# undo_button.disabled = never
+	undo_button.disabled = len(bst_history) == 0
 
 	done_button.disabled = not done_naming
 	for idx in range(len(repeat_buttons)):
@@ -120,14 +122,7 @@ func eval_state() -> void:
 	eval_button_state()
 	update_displays()
 
-func apply_resolve_bst(bst: Parser.BST):
-	if total_bst.is_directly_unresolved():
-		total_bst = bst
-	else:
-		print("Before resolve: ", total_bst.get_repr())
-		total_bst.resolve_first(bst)
-		print("After resolve: ", total_bst.get_repr())
-	
+func eval_current_from_bst() -> void:
 	var next_unresolved = total_bst.first_unresolved_child()
 	if next_unresolved == null:
 		# Done naming!!
@@ -136,6 +131,17 @@ func apply_resolve_bst(bst: Parser.BST):
 		current_stack = next_unresolved.substring
 	print("on tree ", total_bst.get_repr(), " next unresolved is: ",current_stack)
 	eval_state()
+
+func apply_resolve_bst(bst: Parser.BST):
+	bst_history.append(total_bst.deep_clone())
+
+	if total_bst.is_directly_unresolved():
+		total_bst = bst
+	else:
+		print("Before resolve: ", total_bst.get_repr())
+		total_bst.resolve_first(bst)
+		print("After resolve: ", total_bst.get_repr())
+	eval_current_from_bst()
 
 func make_button_click_action(do_one_step_and_get_bst: Callable) -> Callable:
 	return func():
@@ -148,6 +154,13 @@ func make_button_click_parameterized_action(param: int, do_one_step_and_get_bst:
 		var resolved_bst = do_one_step_and_get_bst.call(param, current_stack)
 		# print("resolving bst for repeat ", param, " resolved to ", resolved_bst.get_name(), ", aka ", resolved_bst.get_repr())
 		apply_resolve_bst(resolved_bst)
+
+func undo_history() -> void:
+	if len(bst_history) == 0:
+		return
+	var back_hist = bst_history.pop_back()
+	total_bst = back_hist
+	eval_current_from_bst()
 
 func _ready() -> void:
 	img_path_map = {
@@ -172,6 +185,8 @@ func _ready() -> void:
 		var button = repeat_buttons[idx]
 		var repeat_count = idx + 2
 		button.pressed.connect(make_button_click_parameterized_action(repeat_count, Parser.do_one_step_repeat))
+
+	undo_button.pressed.connect(undo_history)
 
 	initiate_split_button.pressed.connect(func():
 		is_splitting = true

@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d0bx2ffxqtdnn" path="res://scenes/naming_ui.gd" id="1_igo0j"]
 [ext_resource type="Theme" uid="uid://dlnecythsgbl1" path="res://ui/buttons.theme.tres" id="1_pw6ya"]
-[ext_resource type="StyleBox" uid="uid://cnmtghe5y88ua" path="res://ui/button_stylebox_hovered.tres" id="2_ge8nu"]
-[ext_resource type="StyleBox" uid="uid://b4t7y1i1ljyp5" path="res://ui/button_stylebox_normal.tres" id="2_glona"]
 [ext_resource type="Texture2D" uid="uid://bdat66a0cih3" path="res://img/disabled.png" id="8_d4j6g"]
 [ext_resource type="Theme" uid="uid://ct3uyhalnf088" path="res://ui/button_theme_2.tres" id="11_3lqn1"]
 
@@ -612,9 +610,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_pw6ya")
-theme_override_styles/normal = ExtResource("2_glona")
-theme_override_styles/hover = ExtResource("2_ge8nu")
+theme = ExtResource("11_3lqn1")
 autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Undo" unique_id=1292899037]
@@ -644,9 +640,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_pw6ya")
-theme_override_styles/normal = ExtResource("2_glona")
-theme_override_styles/hover = ExtResource("2_ge8nu")
+theme = ExtResource("11_3lqn1")
 autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/BackToEdit" unique_id=152906004]

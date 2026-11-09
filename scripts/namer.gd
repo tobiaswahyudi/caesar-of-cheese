@@ -80,6 +80,15 @@ class BST:
 		# Equivalent to (self is BSTUnresolved)
 		return false
 
+	func deep_clone() -> BST:
+		return null
+
+	func deep_cloned_children() -> Array[BST]:
+		var arr: Array[BST] = []
+		for c in children:
+			arr.append(c.deep_clone())
+		return arr
+
 class BSTUnresolved extends BST:
 	func get_name(unres_func: Variant = null) -> String:
 		if unres_func:
@@ -94,6 +103,9 @@ class BSTUnresolved extends BST:
 
 	func is_directly_unresolved() -> bool:
 		return true
+
+	func deep_clone() -> BST:
+		return BSTUnresolved.new(substring, deep_cloned_children())
 
 class BSTIngredient extends BST:
 	func get_name(_unres_func: Variant = null) -> String:
@@ -114,6 +126,9 @@ class BSTIngredient extends BST:
 	func depth() -> int:
 		return 1
 
+	func deep_clone() -> BST:
+		return BSTIngredient.new(substring, deep_cloned_children())
+
 class BSTBurger extends BST:
 	func get_name(unres_func: Variant = null) -> String:
 		if children[0].is_patty_sequence():
@@ -131,6 +146,9 @@ class BSTBurger extends BST:
 
 	func first_unresolved_child() -> BST:
 		return children[0].first_unresolved_child()
+
+	func deep_clone() -> BST:
+		return BSTBurger.new(substring, deep_cloned_children())
 
 class BSTSequence extends BST:
 	func get_name(unres_func: Variant = null) -> String:
@@ -158,6 +176,9 @@ class BSTSequence extends BST:
 		# disfavor sequences
 		return max_child_depth() + 2
 
+	func deep_clone() -> BST:
+		return BSTSequence.new(substring, deep_cloned_children())
+
 class BSTMultiple extends BST:
 	func get_name(unres_func: Variant = null) -> String:
 		return tuple_name + ' ' + children[0].get_name(unres_func)
@@ -173,6 +194,11 @@ class BSTMultiple extends BST:
 
 	func is_cheese_sequence() -> bool:
 		return children[0].is_cheese_sequence()
+
+	func deep_clone() -> BST:
+		var mult = BSTMultiple.new(substring, deep_cloned_children())
+		mult.repeat_count = repeat_count
+		return mult
 
 var min_stack_depth_cache: Dictionary[String, int] = {}
 
