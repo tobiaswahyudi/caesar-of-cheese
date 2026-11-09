@@ -26,7 +26,7 @@ texture_margin_bottom = 16.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="NamingUi" type="Control" unique_id=1326688869 node_paths=PackedStringArray("cheeseburger_button", "cheese_sandwich_button", "hamburger_button", "lettuce_button", "burger_button", "undo_button", "done_button", "repeat_buttons", "initiate_split_button", "split_controls_container", "split_left_button", "split_right_button", "execute_split_button", "cancel_split_button", "total_stack_label", "current_stack_label", "stack_name_label")]
+[node name="NamingUi" type="Control" unique_id=1326688869 node_paths=PackedStringArray("single_ingredient_button", "cheeseburger_button", "cheese_sandwich_button", "hamburger_button", "lettuce_button", "burger_button", "undo_button", "done_button", "repeat_buttons", "initiate_split_button", "split_controls_container", "split_left_button", "split_right_button", "execute_split_button", "cancel_split_button", "total_stack_label", "current_stack_label", "stack_name_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,6 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_igo0j")
+single_ingredient_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/Single")
 cheeseburger_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/CB")
 cheese_sandwich_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/CS")
 hamburger_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/HB")
@@ -42,7 +43,7 @@ burger_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/B
 undo_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Undo")
 done_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Done")
 repeat_buttons = [NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/2"), NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/3"), NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/4")]
-initiate_split_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/Split")
+initiate_split_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Split")
 split_controls_container = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer")
 split_left_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer/SplitLeft")
 split_right_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer/SplitRight")
@@ -302,6 +303,37 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 columns = 2
 
+[node name="Single" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid" unique_id=398150294]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("11_3lqn1")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/Single" unique_id=272818853]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/Single/MarginContainer" unique_id=343142211]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_pw6ya")
+bbcode_enabled = true
+text = "Single Ingredient Rule
+[img=16]res://img/bread.png[/img] / [img=16]res://img/cheese.png[/img] / [img=16]res://img/patty.png[/img] / [img=16]res://img/lettuce.png[/img]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CB" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid" unique_id=4332578]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -458,37 +490,6 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Split" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid" unique_id=2046566711]
-layout_mode = 2
-size_flags_horizontal = 15
-size_flags_vertical = 15
-theme = ExtResource("11_3lqn1")
-autowrap_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/Split" unique_id=610191385]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/Split/MarginContainer" unique_id=2105200007]
-layout_mode = 2
-mouse_filter = 1
-theme = ExtResource("1_pw6ya")
-bbcode_enabled = true
-text = "Split Stack
-🔪"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons" unique_id=1581522374]
 clip_contents = true
 layout_mode = 2
@@ -573,7 +574,39 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 columns = 2
+
+[node name="Split" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2" unique_id=2046566711]
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+theme = ExtResource("11_3lqn1")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Split" unique_id=610191385]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Split/MarginContainer" unique_id=2105200007]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_pw6ya")
+bbcode_enabled = true
+text = "Split Stack
+🔪"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Undo" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2" unique_id=830932043]
 layout_mode = 2
@@ -597,6 +630,38 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Undo/MarginContainer" unique_id=1070330070]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_pw6ya")
+bbcode_enabled = true
+text = "Undo ↺"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToEdit" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2" unique_id=1058375536]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_pw6ya")
+theme_override_styles/normal = ExtResource("2_glona")
+theme_override_styles/hover = ExtResource("2_ge8nu")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/BackToEdit" unique_id=152906004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/BackToEdit/MarginContainer" unique_id=1525417494]
 layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("1_pw6ya")

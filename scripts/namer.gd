@@ -33,7 +33,7 @@ class BST:
 		substring = p_str
 		children = p_children
 
-	func get_name() -> String:
+	func get_name(_unres_func: Variant = null) -> String:
 		return "YOU_SHOULDNT_SEE_THIS(" + substring + ")"
 
 	func get_repr() -> String:
@@ -59,7 +59,7 @@ class BST:
 				return c_unresolved
 		return null
 
-	func resolve_first(emplace_bst: BST) -> void:
+	func resolve_first(emplace_bst: BST) -> bool:
 		print("resolving me {0} with {1}".format([get_repr(), emplace_bst.get_repr()]))
 		for idx in len(children):
 			var c = children[idx]
@@ -67,17 +67,23 @@ class BST:
 				print("child is directly unresolved. prev children, ", children)
 				children[idx] = emplace_bst
 				print("child has been directly resolved. new children, ", children)
-				return
+				print("me resolved {0} after {1}. Return now".format([get_repr(), emplace_bst.get_repr()]))
+				return true
 			var c_unresolved = c.first_unresolved_child()
 			if c_unresolved != null:
-				c.resolve_first(emplace_bst)
+				var child_resolve = c.resolve_first(emplace_bst)
+				if child_resolve:
+					return true
+		return false
 
 	func is_directly_unresolved() -> bool:
 		# Equivalent to (self is BSTUnresolved)
 		return false
 
 class BSTUnresolved extends BST:
-	func get_name() -> String:
+	func get_name(unres_func: Variant = null) -> String:
+		if unres_func:
+			return unres_func.call(substring)
 		return Parser.unknown_bst_string
 
 	func get_repr() -> String:
@@ -90,7 +96,7 @@ class BSTUnresolved extends BST:
 		return true
 
 class BSTIngredient extends BST:
-	func get_name() -> String:
+	func get_name(_unres_func: Variant = null) -> String:
 		var index = Type.IngredientLetter.find(substring)
 		if index == -1:
 			return 'Nothing'
@@ -109,14 +115,16 @@ class BSTIngredient extends BST:
 		return 1
 
 class BSTBurger extends BST:
-	func get_name() -> String:
+	func get_name(unres_func: Variant = null) -> String:
 		if children[0].is_patty_sequence():
-			return children[0].tuple_name + " Hamburger"
+			return children[0].get_name(unres_func).replace(Type.IngredientName[Ingredient.IngredientType.Patty],"") + "Hamburger"
 		if children[0].is_patty_cheese_sequence():
-			return children[0].tuple_name + " Cheeseburger"
+			var split = children[0].get_name(unres_func).split(" ")
+			var tuples = split.slice(0, len(split) - 3) # "Patty and Cheese" or "Cheese and Patty"
+			return " ".join(tuples) + " Cheeseburger"
 		if children[0].is_cheese_sequence():
-			return children[0].tuple_name + " Cheese Sandwich"
-		return children[0].get_name() + " Burger"
+			return children[0].get_name(unres_func) + " Sandwich"
+		return children[0].get_name(unres_func) + " Burger"
 
 	func get_repr() -> String:
 		return "[" + children[0].get_repr() + "]"
@@ -125,12 +133,12 @@ class BSTBurger extends BST:
 		return children[0].first_unresolved_child()
 
 class BSTSequence extends BST:
-	func get_name() -> String:
+	func get_name(unres_func: Variant = null) -> String:
 		var contents_name = ""
 		for c in children:
 			if len(contents_name) > 0:
 				contents_name += " and "
-			contents_name += c.get_name()
+			contents_name += c.get_name(unres_func)
 		return contents_name
 
 	func get_repr() -> String:
@@ -151,8 +159,8 @@ class BSTSequence extends BST:
 		return max_child_depth() + 2
 
 class BSTMultiple extends BST:
-	func get_name() -> String:
-		return tuple_name + ' ' + children[0].get_name()
+	func get_name(unres_func: Variant = null) -> String:
+		return tuple_name + ' ' + children[0].get_name(unres_func)
 
 	func get_repr() -> String:
 		return "(" + str(repeat_count) + "x" + children[0].get_repr() + ")"
@@ -169,6 +177,9 @@ class BSTMultiple extends BST:
 var min_stack_depth_cache: Dictionary[String, int] = {}
 
 # Rules
+func check_rule_single(string: String) -> bool:
+	return len(string) <= 1
+
 func check_rule_burger(string: String) -> bool:
 	return RegEx.create_from_string("^B.*B$").search(string) != null
 	
@@ -261,12 +272,17 @@ func greedy_parse(string: String) -> BST:
 func do_one_step_ingredient(string: String) -> BST:
 	return BSTIngredient.new(string, [])
 
+# Resolves the entire stack. Use only for base cases!
 # Handles hamburgers, cheeseburgers, cheese sandwiches.
+# Also single ingredients.
 # Assumes it's checked already!!
 func do_resolve_base_burger(string: String) -> BST:
 	return greedy_parse(string)
 
 func do_one_step_burger(string: String) -> BST:
+	if len(string) == 2:
+		# Nothing burger; just solve it
+		return greedy_parse(string)
 	var insides = do_rule_burger(string)
 	return BSTBurger.new(insides, [BSTUnresolved.new(insides, [])])
 

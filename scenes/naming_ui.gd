@@ -1,6 +1,7 @@
 extends Control
 
 @export_group("Buttons")
+@export var single_ingredient_button: Button
 @export var cheeseburger_button: Button
 @export var cheese_sandwich_button: Button
 @export var hamburger_button: Button
@@ -30,7 +31,7 @@ var split_pos: int = 1
 @export_subgroup("Strings")
 @export var undo_label: String = "Undo ↻"
 @export_multiline var back_label: String = "← Back\nto burger editing "
-@export_multiline var done_editing_label: String = "← Back\nto burger editing "
+@export_multiline var done_editing_label: String
 @export var split_cursor: String = " 🔪 "
 
 @export_subgroup("Sizes")
@@ -54,6 +55,9 @@ var done_naming: bool:
 	get():
 		return current_stack == ""
 
+func highlight_bbstring(string: String):
+	return "[bgcolor=yellow]" + string + "[/bgcolor]"
+
 func make_ingredient_bbstring(ingredient_letter: String, img_size: int = 40) -> String:
 	return "[img={0}]{1}[/img]".format([img_size, img_path_map[ingredient_letter]])
 
@@ -67,6 +71,7 @@ func make_stack_bbstring(stack: String, img_size: int = 40, break_lines: bool = 
 	return total_string
 
 func eval_button_state() -> void:
+	single_ingredient_button.disabled = done_naming or is_splitting or not Parser.check_rule_single(current_stack)
 	cheeseburger_button.disabled = done_naming or is_splitting or not Parser.check_rule_cheeseburger(current_stack)
 	cheese_sandwich_button.disabled = done_naming or is_splitting or not Parser.check_rule_cheese_sandwich(current_stack)
 	hamburger_button.disabled = done_naming or is_splitting or not Parser.check_rule_hamburger(current_stack)
@@ -101,7 +106,15 @@ func update_displays() -> void:
 			current_stack_label.text = make_stack_bbstring(current_stack, current_stack_img_size)
 	else:
 		current_stack_label.text = done_editing_label
-	stack_name_label.text = total_bst.get_name()
+
+	var count: Array[int] = [0]
+	stack_name_label.text = total_bst.get_name(func(stack):
+		count[0] += 1
+		var stack_bbstring = make_stack_bbstring(stack, 24, false)
+		if count[0] == 1:
+			return highlight_bbstring(stack_bbstring)
+		return stack_bbstring
+	)
 
 func eval_state() -> void:
 	eval_button_state()
@@ -127,13 +140,13 @@ func apply_resolve_bst(bst: Parser.BST):
 func make_button_click_action(do_one_step_and_get_bst: Callable) -> Callable:
 	return func():
 		var resolved_bst = do_one_step_and_get_bst.call(current_stack)
-		print("resolving bst for burger resolved to ", resolved_bst.get_name(), ", aka ", resolved_bst.get_repr())
+		# print("resolving bst for burger resolved to ", resolved_bst.get_name(), ", aka ", resolved_bst.get_repr())
 		apply_resolve_bst(resolved_bst)
 
 func make_button_click_parameterized_action(param: int, do_one_step_and_get_bst: Callable) -> Callable:
 	return func():
 		var resolved_bst = do_one_step_and_get_bst.call(param, current_stack)
-		print("resolving bst for repeat ", param, " resolved to ", resolved_bst.get_name(), ", aka ", resolved_bst.get_repr())
+		# print("resolving bst for repeat ", param, " resolved to ", resolved_bst.get_name(), ", aka ", resolved_bst.get_repr())
 		apply_resolve_bst(resolved_bst)
 
 func _ready() -> void:
@@ -147,6 +160,7 @@ func _ready() -> void:
 	total_bst = Parser.BSTUnresolved.new(total_stack, [])
 	eval_state()
 
+	single_ingredient_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
 	cheeseburger_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
 	cheese_sandwich_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
 	hamburger_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
