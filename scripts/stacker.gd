@@ -2,7 +2,15 @@
 class_name Stacker
 extends Node3D
 
+@export var ingredient_list: IngredientList
 @export var ingredient_scene: PackedScene
+
+func add_random_ingredient() -> void:
+	var rand_idx = randi() % 4
+	add_ingredient(ingredient_list.list[rand_idx])
+
+
+@export_tool_button("Add random ingredient") var rnd_btn = add_random_ingredient
 
 var stack_string: String:
 	get():

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://7qvy3ohu37re"]
+
+[ext_resource type="Shader" uid="uid://bqtdefaphseut" path="res://shader/creep.gdshader" id="1_0hlvw"]
+[ext_resource type="Texture2D" uid="uid://by31a3ulcq1sv" path="res://img/plaid.png" id="2_hhbuk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0hlvw")
+shader_parameter/img_tex = ExtResource("2_hhbuk")
+shader_parameter/img_size = 32.0
+shader_parameter/tex_scale = 40.0

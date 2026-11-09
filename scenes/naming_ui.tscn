@@ -5,6 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bdat66a0cih3" path="res://img/disabled.png" id="8_d4j6g"]
 [ext_resource type="Theme" uid="uid://ct3uyhalnf088" path="res://ui/button_theme_2.tres" id="11_3lqn1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a0ww"]
+bg_color = Color(0, 0, 0, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4pga"]
+bg_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv6yh"]
 content_margin_left = 16.0
 content_margin_top = 16.0
@@ -58,12 +64,22 @@ img_path_cheese = "uid://4v7igsauofxf"
 img_path_lettuce = "uid://bo7hhfevimvpw"
 total_stack = "BBPPBBPPBBPPBB"
 
+[node name="Panel" type="Panel" parent="." unique_id=407437780]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2a0ww")
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1164349241]
 layout_mode = 0
 offset_left = 62.0
 offset_top = 58.0
 offset_right = 1085.0
 offset_bottom = 581.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n4pga")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=598816297]
 layout_mode = 2
@@ -118,7 +134,7 @@ custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
-color = Color(1, 0.3372549, 1, 1)
+color = Color(1, 1, 0, 1)
 
 [node name="Label2" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/TotalStack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=310812316]
 clip_contents = false

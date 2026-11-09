@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cfe81yf5q7t4s"]
+
+[ext_resource type="Script" uid="uid://bobdeevgdx84h" path="res://scripts/burger_manager.gd" id="1_5p8cw"]
+[ext_resource type="Resource" uid="uid://geomke0harrb" path="res://resource/ingredients.tres" id="2_3gxyl"]
+[ext_resource type="Script" uid="uid://dp4sx3udd645e" path="res://scripts/subviewport_raycast_forward.gd" id="3_x7wak"]
+[ext_resource type="Script" uid="uid://df5448ngj2l8r" path="res://scripts/stacker.gd" id="4_bf3me"]
+[ext_resource type="PackedScene" uid="uid://vn5xqs01afeo" path="res://resource/ingredient_3d.tscn" id="5_d4nby"]
+[ext_resource type="Material" uid="uid://7qvy3ohu37re" path="res://shader/plaid_material.tres" id="6_nyk07"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a8y0u"]
+
+[node name="BurgerView" type="Node3D" unique_id=1422305750 node_paths=PackedStringArray("stacker", "buttons")]
+script = ExtResource("1_5p8cw")
+ingredient_list = ExtResource("2_3gxyl")
+stacker = NodePath("Stacker")
+buttons = [null, null, null, null, null]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1968878871 node_paths=PackedStringArray("stacker")]
+transform = Transform3D(0.9196022, 0.06821782, -0.38688248, 0, 0.9848078, 0.1736482, 0.39285076, -0.15968727, 0.9056314, 1.2722511, 4.434, 13.810963)
+current = true
+fov = 90.0
+script = ExtResource("3_x7wak")
+stacker = NodePath("../Stacker")
+
+[node name="Stacker" type="Marker3D" parent="." unique_id=241489283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84671235, 0)
+gizmo_extents = 6.0
+script = ExtResource("4_bf3me")
+ingredient_list = ExtResource("2_3gxyl")
+ingredient_scene = ExtResource("5_d4nby")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=334062984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3163433, 18.052906, 18.299767)
+light_energy = 3.953
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_opacity = 0.81
+shadow_blur = 3.0
+omni_range = 83.614
+omni_attenuation = 1.237
+omni_shadow_mode = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1256698452]
+transform = Transform3D(286.89142, -67.19091, -56.379868, 0, 192.83629, -229.81331, 87.711494, 219.77159, 184.41025, 65.72217, 28.346767, -39.999786)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_a8y0u")
+surface_material_override/0 = ExtResource("6_nyk07")
