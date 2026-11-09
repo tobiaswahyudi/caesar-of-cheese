@@ -26,7 +26,7 @@ texture_margin_bottom = 16.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="NamingUi" type="Control" unique_id=1326688869 node_paths=PackedStringArray("cheeseburger_button", "cheese_sandwich_button", "hamburger_button", "lettuce_button", "burger_button", "split_button", "undo_button", "done_button", "repeat_buttons", "total_stack_label", "current_stack_label", "stack_name_label")]
+[node name="NamingUi" type="Control" unique_id=1326688869 node_paths=PackedStringArray("cheeseburger_button", "cheese_sandwich_button", "hamburger_button", "lettuce_button", "burger_button", "undo_button", "done_button", "repeat_buttons", "initiate_split_button", "split_controls_container", "split_left_button", "split_right_button", "execute_split_button", "cancel_split_button", "total_stack_label", "current_stack_label", "stack_name_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,10 +39,15 @@ cheese_sandwich_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/
 hamburger_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/HB")
 lettuce_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/L")
 burger_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/B")
-split_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/Split")
 undo_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Undo")
 done_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Done")
 repeat_buttons = [NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/2"), NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/3"), NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/4")]
+initiate_split_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/Split")
+split_controls_container = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer")
+split_left_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer/SplitLeft")
+split_right_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer/SplitRight")
+execute_split_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer/SplitDo")
+cancel_split_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer/SplitCancel")
 total_stack_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/TotalStack/MarginContainer/MarginContainer/TotalStack")
 current_stack_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/CurrentStackImgDisplay")
 stack_name_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/Panel/MarginContainer/TotalStack/TotalStackNameLabel")
@@ -161,6 +166,7 @@ custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 
 [node name="SplitControlsContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2" unique_id=187376007]
+visible = false
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -201,6 +207,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 focus_mode = 2
 bbcode_enabled = true
+text = "abc"
 horizontal_alignment = 1
 vertical_alignment = 1
 selection_enabled = true

@@ -6,6 +6,7 @@
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/styles/disabled = ExtResource("1_lrrve")
 Button/styles/hover = ExtResource("2_vofuh")
 Button/styles/normal = ExtResource("3_l4l2v")

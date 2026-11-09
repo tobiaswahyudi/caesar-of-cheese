@@ -6,10 +6,19 @@ extends Control
 @export var hamburger_button: Button
 @export var lettuce_button: Button
 @export var burger_button: Button
-@export var split_button: Button
 @export var undo_button: Button
 @export var done_button: Button
 @export var repeat_buttons: Array[Button]
+
+var is_splitting: bool = false
+var split_pos: int = 1
+
+@export var initiate_split_button: Button
+@export var split_controls_container: Control
+@export var split_left_button: Button
+@export var split_right_button: Button
+@export var execute_split_button: Button
+@export var cancel_split_button: Button
 
 @export_group("Display Elements")
 @export var total_stack_label: RichTextLabel
@@ -22,6 +31,7 @@ extends Control
 @export var undo_label: String = "Undo ↻"
 @export_multiline var back_label: String = "← Back\nto burger editing "
 @export_multiline var done_editing_label: String = "← Back\nto burger editing "
+@export var split_cursor: String = " 🔪 "
 
 @export_subgroup("Sizes")
 @export var total_stack_label_img_size: int = 28
@@ -48,6 +58,7 @@ func make_ingredient_bbstring(ingredient_letter: String, img_size: int = 40) -> 
 	return "[img={0}]{1}[/img]".format([img_size, img_path_map[ingredient_letter]])
 
 func make_stack_bbstring(stack: String, img_size: int = 40, break_lines: bool = false) -> String:
+	print("get bbstring for stack ", stack)
 	var total_string = ""
 	for letter in stack.split():
 		if len(total_string) and break_lines:
@@ -56,25 +67,38 @@ func make_stack_bbstring(stack: String, img_size: int = 40, break_lines: bool = 
 	return total_string
 
 func eval_button_state() -> void:
-	cheeseburger_button.disabled = done_naming or not Parser.check_rule_cheeseburger(current_stack)
-	cheese_sandwich_button.disabled = done_naming or not Parser.check_rule_cheese_sandwich(current_stack)
-	hamburger_button.disabled = done_naming or not Parser.check_rule_hamburger(current_stack)
-	lettuce_button.disabled = done_naming or not Parser.check_rule_lettuce(current_stack)
-	burger_button.disabled = done_naming or not Parser.check_rule_burger(current_stack)
-	split_button.disabled = done_naming
-	# undo_button.disabled = done_naming or false
+	cheeseburger_button.disabled = done_naming or is_splitting or not Parser.check_rule_cheeseburger(current_stack)
+	cheese_sandwich_button.disabled = done_naming or is_splitting or not Parser.check_rule_cheese_sandwich(current_stack)
+	hamburger_button.disabled = done_naming or is_splitting or not Parser.check_rule_hamburger(current_stack)
+	lettuce_button.disabled = done_naming or is_splitting or not Parser.check_rule_lettuce(current_stack)
+	burger_button.disabled = done_naming or is_splitting or not Parser.check_rule_burger(current_stack)
+
+	initiate_split_button.disabled = done_naming or is_splitting
+	# undo_button.disabled = never
+
 	done_button.disabled = not done_naming
 	for idx in range(len(repeat_buttons)):
 		var button = repeat_buttons[idx]
 		var repeat_count = idx + 2
 		button.disabled = done_naming or not Parser.check_rule_repeat(current_stack, repeat_count)
 
+	split_controls_container.visible = is_splitting
+	# split_left_button.disabled = never
+	# split_right_button.disabled = never
+	# execute_split_button.disabled = never
+	# cancel_split_button.disabled = never
+
 func update_displays() -> void:
 	total_stack_label.text = make_stack_bbstring(total_stack, total_stack_label_img_size, true)
 	if len(current_stack) != 0:
 		@warning_ignore("integer_division")
-		var current_stack_img_size = min(current_stack_label_img_size, current_stack_label_width / len(current_stack))
-		current_stack_label.text = make_stack_bbstring(current_stack, current_stack_img_size)
+		var current_stack_img_size = min(current_stack_label_img_size, current_stack_label_width / (len(current_stack) + 1))
+		if is_splitting:
+			var stack_first = make_stack_bbstring(current_stack.substr(0, split_pos), current_stack_img_size)
+			var stack_rest = make_stack_bbstring(current_stack.substr(split_pos), current_stack_img_size)
+			current_stack_label.text = stack_first + split_cursor + stack_rest
+		else:
+			current_stack_label.text = make_stack_bbstring(current_stack, current_stack_img_size)
 	else:
 		current_stack_label.text = done_editing_label
 	stack_name_label.text = total_bst.get_name()
@@ -97,7 +121,7 @@ func apply_resolve_bst(bst: Parser.BST):
 		current_stack = ""
 	else:
 		current_stack = next_unresolved.substring
-	print(current_stack)
+	print("on tree ", total_bst.get_repr(), " next unresolved is: ",current_stack)
 	eval_state()
 
 func make_button_click_action(do_one_step_and_get_bst: Callable) -> Callable:
@@ -135,6 +159,26 @@ func _ready() -> void:
 		var repeat_count = idx + 2
 		button.pressed.connect(make_button_click_parameterized_action(repeat_count, Parser.do_one_step_repeat))
 
-	# split_button.pressed.connect()
-	# undo_button.pressed.connect()
-	# done_button.pressed.connect()
+	initiate_split_button.pressed.connect(func():
+		is_splitting = true
+		split_pos = 1
+		eval_state()
+	)
+	split_left_button.pressed.connect(func():
+		split_pos = max(1, split_pos - 1)
+		eval_state()
+	)
+	split_right_button.pressed.connect(func():
+		split_pos = min(len(current_stack) - 1, split_pos + 1)
+		eval_state()
+	)
+	execute_split_button.pressed.connect(func():
+		is_splitting = false
+		var resolved_bst = Parser.do_one_step_split(split_pos, current_stack)
+		apply_resolve_bst(resolved_bst)
+		eval_state()
+	)
+	cancel_split_button.pressed.connect(func():
+		is_splitting = false
+		eval_state()
+	)

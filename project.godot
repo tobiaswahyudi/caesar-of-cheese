@@ -18,8 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Type="*uid://goqn27kgm16g"
-IngredientAutoload="*uid://dtttoqygyksym"
-IngredientListAutoload="*uid://bwaghel027jgw"
 Parser="*uid://b7gbv1mh548oa"
 
 [display]
