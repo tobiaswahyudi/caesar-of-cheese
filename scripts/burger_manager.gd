@@ -1,7 +1,8 @@
+class_name BurgerManager
 extends Node3D
 
 @export var ingredient_list: IngredientList
-@export var stacker: Stacker
+@onready var stacker: Stacker = $Stacker
 @export var buttons: Array[BaseButton]
 
 func make_callback(ingredient_idx: int):

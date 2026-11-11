@@ -1,4 +1,8 @@
+class_name NamingUI
 extends Control
+
+@export_group("Managers")
+@export var burger_manager: BurgerManager
 
 @export_group("Buttons")
 @export var single_ingredient_button: Button
@@ -7,7 +11,7 @@ extends Control
 @export var hamburger_button: Button
 @export var lettuce_button: Button
 @export var burger_button: Button
-@export var undo_button: Button
+@export var undo_or_back_button: Button
 @export var done_button: Button
 @export var repeat_buttons: Array[Button]
 
@@ -31,6 +35,7 @@ var split_pos: int = 1
 @export_subgroup("Strings")
 @export var undo_label: String = "Undo ↻"
 @export_multiline var back_label: String = "← Back\nto burger editing "
+@export var undo_or_back_label: RichTextLabel
 @export_multiline var done_editing_label: String
 @export var split_cursor: String = " 🔪 "
 
@@ -81,7 +86,9 @@ func eval_button_state() -> void:
 	burger_button.disabled = done_naming or is_splitting or not Parser.check_rule_burger(current_stack)
 
 	initiate_split_button.disabled = done_naming or is_splitting
-	undo_button.disabled = len(bst_history) == 0
+	# undo_button.disabled = len(bst_history) == 0
+
+	undo_or_back_label.text = back_label if len(bst_history) == 0 else undo_label
 
 	done_button.disabled = not done_naming
 	for idx in range(len(repeat_buttons)):
@@ -157,10 +164,18 @@ func make_button_click_parameterized_action(param: int, do_one_step_and_get_bst:
 
 func undo_history() -> void:
 	if len(bst_history) == 0:
-		return
+		visible = false
+		burger_manager.stacker.pop_top()
 	var back_hist = bst_history.pop_back()
 	total_bst = back_hist
 	eval_current_from_bst()
+
+func open(string_stack: String) -> void:
+	visible = true
+	total_stack = string_stack
+	current_stack = total_stack
+	total_bst = Parser.BSTUnresolved.new(total_stack, [])
+	eval_state()
 
 func _ready() -> void:
 	img_path_map = {
@@ -169,9 +184,6 @@ func _ready() -> void:
 		Type.IngredientLetter[Ingredient.IngredientType.Cheese]: img_path_cheese,
 		Type.IngredientLetter[Ingredient.IngredientType.Lettuce]: img_path_lettuce
 	}
-	current_stack = total_stack
-	total_bst = Parser.BSTUnresolved.new(total_stack, [])
-	eval_state()
 
 	single_ingredient_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
 	cheeseburger_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
@@ -186,7 +198,7 @@ func _ready() -> void:
 		var repeat_count = idx + 2
 		button.pressed.connect(make_button_click_parameterized_action(repeat_count, Parser.do_one_step_repeat))
 
-	undo_button.pressed.connect(undo_history)
+	undo_or_back_button.pressed.connect(undo_history)
 
 	initiate_split_button.pressed.connect(func():
 		is_splitting = true

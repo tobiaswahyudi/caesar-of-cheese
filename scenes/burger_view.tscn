@@ -9,25 +9,29 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a8y0u"]
 
-[node name="BurgerView" type="Node3D" unique_id=1422305750 node_paths=PackedStringArray("stacker", "buttons")]
+[node name="BurgerView" type="Node3D" unique_id=1422305750 node_paths=PackedStringArray("buttons")]
 script = ExtResource("1_5p8cw")
 ingredient_list = ExtResource("2_3gxyl")
-stacker = NodePath("Stacker")
 buttons = [null, null, null, null, null]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1968878871 node_paths=PackedStringArray("stacker")]
-transform = Transform3D(0.9196022, 0.06821782, -0.38688248, 0, 0.9848078, 0.1736482, 0.39285076, -0.15968727, 0.9056314, 1.2722511, 4.434, 13.810963)
+physics_interpolation_mode = 1
+transform = Transform3D(0.9196022, 0.06821782, -0.38688248, 0, 0.9848078, 0.1736482, 0.39285076, -0.15968727, 0.9056314, 1.272, 4.5, 13.811)
 current = true
 fov = 90.0
 script = ExtResource("3_x7wak")
 stacker = NodePath("../Stacker")
 
-[node name="Stacker" type="Marker3D" parent="." unique_id=241489283]
+[node name="Stacker" type="Marker3D" parent="." unique_id=241489283 node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84671235, 0)
 gizmo_extents = 6.0
 script = ExtResource("4_bf3me")
 ingredient_list = ExtResource("2_3gxyl")
 ingredient_scene = ExtResource("5_d4nby")
+camera = NodePath("../Camera3D")
+starting_camera_height = 4.5
+camera_displace_min_height = 3.6
+camera_displace_mult = 0.45
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=334062984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3163433, 18.052906, 18.299767)
@@ -36,12 +40,11 @@ light_indirect_energy = 0.0
 shadow_enabled = true
 shadow_opacity = 0.81
 shadow_blur = 3.0
-omni_range = 83.614
-omni_attenuation = 1.237
-omni_shadow_mode = 0
+omni_range = 498.074
+omni_attenuation = 0.291
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1256698452]
-transform = Transform3D(286.89142, -67.19091, -56.379868, 0, 192.83629, -229.81331, 87.711494, 219.77159, 184.41025, 65.72217, 28.346767, -39.999786)
+transform = Transform3D(344.2697, -80.62909, -67.65584, 0, 231.40355, -275.776, 105.2538, 263.7259, 221.29233, 65.72217, 28.346767, -39.999786)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_a8y0u")
 surface_material_override/0 = ExtResource("6_nyk07")

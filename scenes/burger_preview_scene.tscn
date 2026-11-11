@@ -1,0 +1,298 @@
+[gd_scene format=3 uid="uid://fdd35k3ew65n"]
+
+[ext_resource type="Script" uid="uid://bl5q5di8wv4fu" path="res://ui/burger_preview_popup.gd" id="1_y5t83"]
+[ext_resource type="Theme" uid="uid://ct3uyhalnf088" path="res://ui/button_theme_2.tres" id="2_vicdt"]
+[ext_resource type="Theme" uid="uid://dlnecythsgbl1" path="res://ui/buttons.theme.tres" id="3_agos4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbdan"]
+bg_color = Color(0, 0, 0, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4vm8"]
+bg_color = Color(0.3137255, 0.3137255, 0.3137255, 1)
+
+[node name="BurgerPreviewScene" type="Control" unique_id=837683222 node_paths=PackedStringArray("close_buttons", "burger_match_container", "burger_mismatch_container", "next_customer_button", "explain_naming_button", "burger_img_displays", "burger_name_displays", "target_name_displays")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y5t83")
+close_buttons = [NodePath("PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2/Nope"), NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2/Nope")]
+burger_match_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/GoodMatch")
+burger_mismatch_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch")
+next_customer_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2/Done")
+explain_naming_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2/Explain")
+burger_img_displays = NodePath("PanelContainer/MarginContainer/VBoxContainer/CurrentStackImgDisplay")
+burger_name_displays = [NodePath("PanelContainer/MarginContainer/VBoxContainer/GoodMatch/StackName"), NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch/StackName")]
+target_name_displays = NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch/OrderName")
+
+[node name="Panel" type="Panel" parent="." unique_id=1041346991]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbdan")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=326013264]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -62.5
+offset_right = 160.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4vm8")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1521025050]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1676956831]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1555974257]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "You made:"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=830585566]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="GoodMatch" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1029360432]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch" unique_id=158923092]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "The customer says: \"That's a good looking"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="StackName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch" unique_id=1002639658]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+text = "Double Double Cheeseburger on Burger Burger"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch" unique_id=1416782866]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "Nice!\""
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch" unique_id=131050213]
+layout_mode = 2
+alignment = 2
+
+[node name="Done" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2" unique_id=962270928]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+theme = ExtResource("2_vicdt")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2/Done" unique_id=313775921]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2/Done/MarginContainer" unique_id=388902105]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("3_agos4")
+bbcode_enabled = true
+text = "Nice!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nope" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2" unique_id=8839546]
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+theme = ExtResource("2_vicdt")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2/Nope" unique_id=1667768554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2/Nope/MarginContainer" unique_id=196365860]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("3_agos4")
+bbcode_enabled = true
+text = "I can do better"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BadMatch" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1665658972]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch" unique_id=2011216526]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "The customer says: \"Hey, this looks like a"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="StackName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch" unique_id=2126432424]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+text = "Double Double Cheeseburger on Burger Burger"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch" unique_id=1442325437]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "But I wanted a"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="OrderName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch" unique_id=24509955]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+text = "Double Double Cheeseburger on Burger Burger"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Label4" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch" unique_id=1508193783]
+clip_contents = false
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "What's going on here?\""
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch" unique_id=738576540]
+layout_mode = 2
+alignment = 2
+
+[node name="Explain" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2" unique_id=1133628697]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+theme = ExtResource("2_vicdt")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2/Explain" unique_id=543290668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2/Explain/MarginContainer" unique_id=784413196]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("3_agos4")
+bbcode_enabled = true
+text = "Let me explain!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nope" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2" unique_id=901127057]
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+theme = ExtResource("2_vicdt")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2/Nope" unique_id=1325121601]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2/Nope/MarginContainer" unique_id=258879838]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("3_agos4")
+bbcode_enabled = true
+text = "I'll make you a new one"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

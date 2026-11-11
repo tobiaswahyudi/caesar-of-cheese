@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://k2h381n0xo37"]
 
 [ext_resource type="Theme" uid="uid://ct3uyhalnf088" path="res://ui/button_theme_2.tres" id="1_v4vm8"]
+[ext_resource type="Script" uid="uid://twv2e2y3hdvs" path="res://ui/burger_confirm_popup.gd" id="1_ylwpi"]
 [ext_resource type="Theme" uid="uid://dlnecythsgbl1" path="res://ui/buttons.theme.tres" id="2_ylwpi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbdan"]
@@ -9,13 +10,17 @@ bg_color = Color(0, 0, 0, 0.4)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4vm8"]
 bg_color = Color(0.3137255, 0.3137255, 0.3137255, 1)
 
-[node name="BurgerConfirmScene" type="Control" unique_id=837683222]
+[node name="BurgerConfirmScene" type="Control" unique_id=837683222 node_paths=PackedStringArray("close_button", "confirm_button", "burger_display")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ylwpi")
+close_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Nope")
+confirm_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Done")
+burger_display = NodePath("PanelContainer/MarginContainer/VBoxContainer/CurrentStackImgDisplay")
 
 [node name="Panel" type="Panel" parent="." unique_id=1041346991]
 layout_mode = 1
@@ -62,6 +67,19 @@ text = "Serve burger?"
 fit_content = true
 horizontal_alignment = 1
 
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=830585566]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1257616028]
 layout_mode = 2
 alignment = 2
@@ -97,14 +115,14 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Done2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=186827542]
+[node name="Nope" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=186827542]
 layout_mode = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 theme = ExtResource("1_v4vm8")
 autowrap_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Done2" unique_id=1845610842]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Nope" unique_id=1845610842]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,7 +134,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Done2/MarginContainer" unique_id=1274688073]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Nope/MarginContainer" unique_id=1274688073]
 layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("2_ylwpi")
