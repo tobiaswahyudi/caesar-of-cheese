@@ -237,7 +237,7 @@ layout_mode = 2
 alignment = 2
 
 [node name="Explain" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2" unique_id=1133628697]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
@@ -261,7 +261,7 @@ layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("3_agos4")
 bbcode_enabled = true
-text = "Let me explain!"
+text = "I can explain!"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -291,7 +291,7 @@ layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("3_agos4")
 bbcode_enabled = true
-text = "I'll make you a new one"
+text = "Let me fix it"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
