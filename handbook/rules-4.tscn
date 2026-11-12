@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://btcfhlh4obm58"]
+
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="1_kj22p"]
+
+[node name="IntroPage" type="Control" unique_id=518672617]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kj22p")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1980996823]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1520183778]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Heading1" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1666657062]
+layout_mode = 2
+theme = ExtResource("1_kj22p")
+theme_override_font_sizes/font_size = 22
+text = "2. Structural Rules"
+
+[node name="Content1" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1085534690]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_kj22p")
+bbcode_enabled = true
+text = "
+If a stack is not resolved into the base sandwiches (Hamburger, Cheeseburger, Cheese Sandwich) then we may apply the structure rules.
+
+This gives us smaller stacks which are easier to name, then we can name the overall stack from them.
+
+"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Heading2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1278569218]
+layout_mode = 2
+theme = ExtResource("1_kj22p")
+theme_override_font_sizes/font_size = 22
+text = "3. The Burger Rule"
+
+[node name="Content3" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=339937351]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_kj22p")
+bbcode_enabled = true
+text = "
+The simplest of these rules is the Burger Rule:"
+fit_content = true
+autowrap_mode = 2

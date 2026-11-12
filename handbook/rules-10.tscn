@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://nk0h3c6rl4pr"]
+
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="1_6njum"]
+
+[node name="IntroPage" type="Control" unique_id=518672617]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6njum")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1980996823]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+
+[node name="Content6" type="RichTextLabel" parent="MarginContainer" unique_id=28459000]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_6njum")
+bbcode_enabled = true
+text = "[img=20]res://img/bread.png[/img][img=20]res://img/patty.png[/img][img=20]res://img/patty.png[/img][img=20]res://img/patty.png[/img][img=20]res://img/patty.png[/img][img=20]res://img/patty.png[/img][img=20]res://img/bread.png[/img] =
+
+∙[img=16]res://img/bread.png[/img] + [img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img] + [img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img] + [img=16]res://img/bread.png[/img]
+  → Double Patty and Triple
+    Patty Burger
+∙[img=16]res://img/bread.png[/img] + [img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img] + [img=16]res://img/patty.png[/img] + [img=16]res://img/bread.png[/img]
+  → Quadruple Patty and Patty
+    Burger
+∙(28 other names)
+
+[img=20]res://img/bread.png[/img][img=20]res://img/bread.png[/img][img=20]res://img/patty.png[/img][img=20]res://img/bread.png[/img][img=20]res://img/patty.png[/img][img=20]res://img/bread.png[/img][img=20]res://img/bread.png[/img][img=20]res://img/bread.png[/img] =
+
+∙[img=16]res://img/bread.png[/img] + [img=16]res://img/bread.png[/img] + [img=16]res://img/patty.png[/img][img=16]res://img/bread.png[/img] + [img=16]res://img/patty.png[/img][img=16]res://img/bread.png[/img] + [img=16]res://img/bread.png[/img] + [img=16]res://img/bread.png[/img]
+  → Double Patty and Bread
+    Burger Burger
+∙[img=16]res://img/bread.png[/img] + [img=16]res://img/bread.png[/img][img=16]res://img/patty.png[/img] + [img=16]res://img/bread.png[/img][img=16]res://img/patty.png[/img] + [img=16]res://img/bread.png[/img][img=16]res://img/bread.png[/img] + [img=16]res://img/bread.png[/img]
+  → Double Bread and Patty
+    and Nothing Burger Burger"
+fit_content = true
+autowrap_mode = 2
+autowrap_trim_flags = 64

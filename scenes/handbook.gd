@@ -15,6 +15,9 @@ extends Control
 @export var left_page_sheet: PanelContainer
 @export var right_page_sheet: PanelContainer
 
+@export var close_button: BaseButton
+@export var open_button: BaseButton
+
 var num_pages: int:
 	get():
 		return len(pages)
@@ -47,7 +50,7 @@ func render() -> void:
 	else:
 		right_page_sheet.visible = false
 	prev_page_button.disabled = current_right_page_index == 0
-	next_page_button.disabled = num_pages < current_right_page_index + 2
+	next_page_button.disabled = current_right_page_index == num_pages - 1
 
 func prev_page():
 	current_right_page_index -= 2
@@ -61,6 +64,12 @@ func _ready() -> void:
 	render()
 	prev_page_button.pressed.connect(prev_page)
 	next_page_button.pressed.connect(next_page)
+	close_button.pressed.connect(func():
+		visible = false
+	)
+	open_button.pressed.connect(func():
+		visible = true
+	)
 
 @export_tool_button("Prev page") var a = prev_page
 @export_tool_button("Next page") var b = next_page

@@ -96,6 +96,19 @@ theme = ExtResource("1_x7veg")
 theme_override_constants/line_separation = 5
 bbcode_enabled = true
 text = "
-It *may* seem more consistent for [img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/cheese.png[/img][img=16]uid://b6drcx0m4m2wn[/img] to have the \"Cheese Burger\" title. But it's not what customers expect a Cheeseburger to be."
+It *may* seem more consistent for [img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/cheese.png[/img][img=16]uid://b6drcx0m4m2wn[/img] to have the \"Cheese Burger\" title. But it's not what customers expect a Cheeseburger to be.
+
+"
 fit_content = true
 autowrap_mode = 2
+
+[node name="Content3" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1945171985]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_x7veg")
+theme_override_constants/line_separation = 5
+bbcode_enabled = true
+text = "_______________"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1

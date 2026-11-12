@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://cfe81yf5q7t4s" path="res://scenes/burger_view.tscn" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://c1vwtgl1k4jr5" path="res://img/customer.png" id="2_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://bojb1c3qc2h4b" path="res://img/bubble.png" id="3_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://b4mhxxtpffwif" path="res://img/unselected.png" id="4_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://ddymq7w0h3oln" path="res://img/selected.png" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://2s881mr80vqj" path="res://scenes/Ingredient_2d.tscn" id="6_tefeu"]
+[ext_resource type="Theme" uid="uid://ct3uyhalnf088" path="res://ui/button_theme_2.tres" id="7_ya4ey"]
 [ext_resource type="Script" uid="uid://doa2ilwpvpgga" path="res://scripts/say_name.gd" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://fdd35k3ew65n" path="res://scenes/burger_preview_scene.tscn" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://k2h381n0xo37" path="res://scenes/burger_confirm_scene.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://cwi42op8d5nmp" path="res://scenes/handbook.tscn" id="12_trceg"]
 [ext_resource type="PackedScene" uid="uid://ck71dpmkcxvjs" path="res://scenes/naming_ui.tscn" id="13_trceg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jkv2x"]
@@ -112,12 +112,10 @@ offset_top = 497.0
 offset_right = 680.0
 offset_bottom = 625.0
 
-[node name="Button0" type="TextureButton" parent="HBoxContainer" unique_id=440137194]
+[node name="Button0" type="Button" parent="HBoxContainer" unique_id=283642395]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("4_tbgi4")
-texture_hover = ExtResource("5_tefeu")
-stretch_mode = 0
+theme = ExtResource("7_ya4ey")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Button0" unique_id=1964586602]
 layout_mode = 0
@@ -142,12 +140,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Bun"
 horizontal_alignment = 1
 
-[node name="Button1" type="TextureButton" parent="HBoxContainer" unique_id=1437719558]
+[node name="Button1" type="Button" parent="HBoxContainer" unique_id=1445360907]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("4_tbgi4")
-texture_hover = ExtResource("5_tefeu")
-stretch_mode = 0
+theme = ExtResource("7_ya4ey")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Button1" unique_id=903751561]
 layout_mode = 0
@@ -173,12 +169,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Patty"
 horizontal_alignment = 1
 
-[node name="Button2" type="TextureButton" parent="HBoxContainer" unique_id=1813916978]
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=1078011710]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("4_tbgi4")
-texture_hover = ExtResource("5_tefeu")
-stretch_mode = 0
+theme = ExtResource("7_ya4ey")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Button2" unique_id=1429614814]
 layout_mode = 0
@@ -204,12 +198,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Cheese"
 horizontal_alignment = 1
 
-[node name="Button3" type="TextureButton" parent="HBoxContainer" unique_id=41721568]
+[node name="Button3" type="Button" parent="HBoxContainer" unique_id=1192426013]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("4_tbgi4")
-texture_hover = ExtResource("5_tefeu")
-stretch_mode = 0
+theme = ExtResource("7_ya4ey")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Button3" unique_id=1872519267]
 layout_mode = 0
@@ -235,12 +227,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Lettuce"
 horizontal_alignment = 1
 
-[node name="Button4" type="TextureButton" parent="HBoxContainer" unique_id=1704166011]
+[node name="Button4" type="Button" parent="HBoxContainer" unique_id=1989709675]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("4_tbgi4")
-texture_hover = ExtResource("5_tefeu")
-stretch_mode = 0
+theme = ExtResource("7_ya4ey")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Button4" unique_id=1797648689]
 layout_mode = 0
@@ -266,16 +256,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Top Bun"
 horizontal_alignment = 1
 
-[node name="HandbookButton" type="TextureButton" parent="." unique_id=1156949024]
+[node name="HandbookButton" type="Button" parent="." unique_id=230806522]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 152.0
 offset_bottom = 152.0
-texture_normal = ExtResource("4_tbgi4")
-texture_hover = ExtResource("5_tefeu")
-stretch_mode = 0
+theme = ExtResource("7_ya4ey")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HandbookButton" unique_id=1582429856]
 layout_mode = 1
@@ -321,3 +309,8 @@ confirm_ui = NodePath("../BurgerConfirmScene")
 visible = false
 layout_mode = 1
 burger_manager = NodePath("../SubViewportContainer/TextureViewport/BurgerView")
+
+[node name="HandbookScene" parent="." unique_id=1338868428 node_paths=PackedStringArray("open_button") instance=ExtResource("12_trceg")]
+visible = false
+layout_mode = 1
+open_button = NodePath("../HandbookButton")

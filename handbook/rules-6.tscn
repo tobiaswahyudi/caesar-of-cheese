@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://b11m5f4om7rbg"]
+
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="1_cfj0u"]
+
+[node name="IntroPage" type="Control" unique_id=518672617]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cfj0u")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1980996823]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1520183778]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Content5" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1937731250]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_cfj0u")
+bbcode_enabled = true
+text = "length 1 or 0.
+
+∙A stack with length 1 is just
+ a single ingredient.
+
+ It is just named the single
+ ingredient.
+
+∙A stack with length 0 is
+ named \"Nothing\".
+
+Examples:
+"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Ingredients3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=705516971]
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients3" unique_id=1331202341]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient3" unique_id=1800994821]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/bread.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient3" unique_id=1414709889]
+layout_mode = 2
+theme = ExtResource("1_cfj0u")
+text = "Bun
+Burger"
+horizontal_alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients3" unique_id=1298368181]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient" unique_id=1893070992]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/lettuce.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient" unique_id=940898678]
+layout_mode = 2
+theme = ExtResource("1_cfj0u")
+text = "Lettuce
+Burger"
+horizontal_alignment = 1
+
+[node name="Ingredient2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients3" unique_id=824441803]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient2" unique_id=230825348]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient2" unique_id=653035360]
+layout_mode = 2
+theme = ExtResource("1_cfj0u")
+text = "Nothing
+Burger"
+horizontal_alignment = 1

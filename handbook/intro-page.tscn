@@ -33,12 +33,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Employee's Handbook
 
+
+
 "
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer" unique_id=456659334]
 layout_mode = 2
-text = "Version 12
+text = "Version 3
 Printed 8.11.2026
 
 
