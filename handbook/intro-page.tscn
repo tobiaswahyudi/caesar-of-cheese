@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://crejvprp6iskq"]
+
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="1_2jjl3"]
+
+[node name="IntroPage" type="Control" unique_id=518672617]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2jjl3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1589164113]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2121208844]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Folly Burger"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=2137257444]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Employee's Handbook
+
+"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=456659334]
+layout_mode = 2
+text = "Version 12
+Printed 8.11.2026
+
+
+
+"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer" unique_id=964304268]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "©2026 Folly Burger Corporation.
+For internal use only. Do not duplicate."
+horizontal_alignment = 1

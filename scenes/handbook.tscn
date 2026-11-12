@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://cwi42op8d5nmp"]
+
+[ext_resource type="Script" uid="uid://bmrdnbhlcchn7" path="res://scenes/handbook.gd" id="1_qx58c"]
+[ext_resource type="PackedScene" uid="uid://crejvprp6iskq" path="res://handbook/intro-page.tscn" id="2_2wqa0"]
+[ext_resource type="StyleBox" uid="uid://dsrl0hvqct6gu" path="res://materials/book_cover.tres" id="2_nhjo4"]
+[ext_resource type="Texture2D" uid="uid://ddm0ul01b2ncp" path="res://img/ring-bind.png" id="2_q5yty"]
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="2_sqt4r"]
+[ext_resource type="PackedScene" uid="uid://btn7myfan4go2" path="res://handbook/table-of-contents.tscn" id="3_maeo1"]
+[ext_resource type="PackedScene" uid="uid://dr8kf1dwo8ad8" path="res://handbook/basic-1.tscn" id="4_maeo1"]
+[ext_resource type="Texture2D" uid="uid://camb2wku7g3bp" path="res://img/arrow.png" id="4_sqt4r"]
+[ext_resource type="PackedScene" uid="uid://jq1oemldwqeq" path="res://handbook/basic-2.tscn" id="5_e263c"]
+[ext_resource type="Texture2D" uid="uid://dwml76ntqfqbt" path="res://img/arrow-hover.png" id="5_xrpe5"]
+[ext_resource type="PackedScene" uid="uid://83oom8fbww8p" path="res://handbook/basic-3.tscn" id="6_gh2wj"]
+[ext_resource type="PackedScene" uid="uid://d1xgi3s08q84o" path="res://handbook/rules-1.tscn" id="7_jom8t"]
+[ext_resource type="Texture2D" uid="uid://eoq8lsn2amd6" path="res://img/arrow-disabled.png" id="7_o8jky"]
+[ext_resource type="PackedScene" uid="uid://bq0txkd5xoje6" path="res://handbook/rules-2.tscn" id="8_4q8oi"]
+[ext_resource type="PackedScene" uid="uid://cl2ffk2wfdywb" path="res://handbook/rules-3.tscn" id="9_11sab"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbdan"]
+bg_color = Color(0, 0, 0, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx58c"]
+bg_color = Color(0.8196545, 0.8196545, 0.8196543, 1)
+
+[node name="HandbookScene" type="Control" unique_id=837683222 node_paths=PackedStringArray("prev_page_button", "next_page_button", "left_page_number", "right_page_number", "left_page_container", "right_page_container", "left_page_sheet", "right_page_sheet")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qx58c")
+pages = Array[PackedScene]([ExtResource("2_2wqa0"), ExtResource("3_maeo1"), ExtResource("4_maeo1"), ExtResource("5_e263c"), ExtResource("6_gh2wj"), ExtResource("7_jom8t"), ExtResource("8_4q8oi"), ExtResource("9_11sab")])
+prev_page_button = NodePath("PageLeft")
+next_page_button = NodePath("PageRight")
+left_page_number = NodePath("MarginContainer/HBoxContainer/FrontCover/MarginContainer/PanelContainer/Label")
+right_page_number = NodePath("MarginContainer/HBoxContainer/BackCover/MarginContainer/PanelContainer/Label")
+left_page_container = NodePath("MarginContainer/HBoxContainer/FrontCover/MarginContainer/PanelContainer/CenterContainer")
+right_page_container = NodePath("MarginContainer/HBoxContainer/BackCover/MarginContainer/PanelContainer/CenterContainer")
+left_page_sheet = NodePath("MarginContainer/HBoxContainer/FrontCover/MarginContainer/PanelContainer")
+right_page_sheet = NodePath("MarginContainer/HBoxContainer/BackCover/MarginContainer/PanelContainer")
+
+[node name="BackDarken" type="Panel" parent="." unique_id=1041346991]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbdan")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=637120028]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1742239081]
+layout_mode = 2
+theme_override_constants/separation = -28
+
+[node name="FrontCover" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=2015234851]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_nhjo4")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/FrontCover" unique_id=1073746061]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/FrontCover/MarginContainer" unique_id=241103894]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qx58c")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/FrontCover/MarginContainer/PanelContainer" unique_id=993037838]
+layout_mode = 2
+theme = ExtResource("2_sqt4r")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/FrontCover/MarginContainer/PanelContainer" unique_id=2062613456]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("2_sqt4r")
+text = "  6  
+"
+vertical_alignment = 2
+
+[node name="Rings" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=842613019]
+z_index = 1
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Rings" unique_id=1905151692]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.23
+texture = ExtResource("2_q5yty")
+expand_mode = 5
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/Rings" unique_id=1719526475]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.23
+texture = ExtResource("2_q5yty")
+expand_mode = 5
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/Rings" unique_id=1167983099]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.23
+texture = ExtResource("2_q5yty")
+expand_mode = 5
+flip_h = true
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer/Rings" unique_id=1558283212]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.23
+texture = ExtResource("2_q5yty")
+expand_mode = 5
+flip_h = true
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer/Rings" unique_id=2034090928]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.23
+texture = ExtResource("2_q5yty")
+expand_mode = 5
+flip_h = true
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/HBoxContainer/Rings" unique_id=780206443]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.23
+texture = ExtResource("2_q5yty")
+expand_mode = 5
+flip_h = true
+
+[node name="BackCover" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=166950782]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_nhjo4")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/BackCover" unique_id=1437399655]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/BackCover/MarginContainer" unique_id=1984925973]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qx58c")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/BackCover/MarginContainer/PanelContainer" unique_id=1667873451]
+layout_mode = 2
+theme = ExtResource("2_sqt4r")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/BackCover/MarginContainer/PanelContainer" unique_id=175720655]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("2_sqt4r")
+text = "  7  
+"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="PageLeft" type="TextureButton" parent="." unique_id=1240023816]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 72.0
+offset_top = 23.0
+offset_right = 172.0
+offset_bottom = 123.0
+grow_vertical = 2
+texture_normal = ExtResource("4_sqt4r")
+texture_hover = ExtResource("5_xrpe5")
+texture_disabled = ExtResource("7_o8jky")
+
+[node name="PageRight" type="TextureButton" parent="." unique_id=1731137342]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = 23.0
+offset_right = -72.0
+offset_bottom = 123.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_sqt4r")
+texture_hover = ExtResource("5_xrpe5")
+texture_disabled = ExtResource("7_o8jky")
+flip_h = true

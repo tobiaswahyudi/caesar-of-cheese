@@ -1,0 +1,14 @@
+[gd_resource type="Theme" format=3 uid="uid://l1tjqsot460e"]
+
+[sub_resource type="SystemFont" id="SystemFont_i6k4n"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="SystemFont" id="SystemFont_x0fup"]
+font_names = PackedStringArray("Monospace")
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = SubResource("SystemFont_i6k4n")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 3
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_x0fup")

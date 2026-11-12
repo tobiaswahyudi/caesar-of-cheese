@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://btn7myfan4go2"]
+
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="1_rotf2"]
+
+[node name="IntroPage" type="Control" unique_id=518672617]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rotf2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1589164113]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=2137257444]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "
+Table of Contents"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1980996823]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1520183778]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=1015825145]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1666657062]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "1. Basics"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1876021136]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1423777969]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=47666824]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1868045830]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = " 1.1. Ingredients"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=300911130]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=230325611]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=37151148]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer9" unique_id=1628066779]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = " 1.2. Basic Terms"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer9" unique_id=1917428212]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer9" unique_id=625757346]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=180928156]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1511377005]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "	1.3. Multiples"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1214512484]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2063452318]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "4"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=215814925]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1315129779]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "2. Sandwich Names"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=243953167]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=363545654]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=1113132101]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1977497148]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = " 2.1. Base Sandwiches"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=2028121692]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1353355492]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=1631946831]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=703432306]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = " 2.2. One Ingredient"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=712270355]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=678619177]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=921943226]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7" unique_id=1175185305]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = " 2.3. Structural Rules"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7" unique_id=369620860]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7" unique_id=1131812570]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=647578980]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8" unique_id=191644138]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3. Serving Rules"
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8" unique_id=705588062]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_rotf2")
+text = ".............................................."
+clip_text = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8" unique_id=1797530758]
+layout_mode = 2
+theme = ExtResource("1_rotf2")
+text = "3"

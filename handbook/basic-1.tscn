@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://dr8kf1dwo8ad8"]
+
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="1_jwtmn"]
+[ext_resource type="Texture2D" uid="uid://b6drcx0m4m2wn" path="res://img/bread.png" id="2_s6ito"]
+[ext_resource type="Texture2D" uid="uid://bo7hhfevimvpw" path="res://img/lettuce.png" id="3_3jtkh"]
+[ext_resource type="Texture2D" uid="uid://c16bsyfnocsd7" path="res://img/patty.png" id="4_3gnpb"]
+[ext_resource type="Texture2D" uid="uid://4v7igsauofxf" path="res://img/cheese.png" id="5_h7tsp"]
+
+[node name="IntroPage" type="Control" unique_id=518672617]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jwtmn")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1980996823]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1520183778]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2137257444]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Basics
+"
+horizontal_alignment = 1
+
+[node name="Heading1" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1666657062]
+layout_mode = 2
+theme = ExtResource("1_jwtmn")
+theme_override_font_sizes/font_size = 22
+text = "1. Ingredients"
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer" unique_id=118631605]
+layout_mode = 2
+theme = ExtResource("1_jwtmn")
+text = "
+These are your ingredients:
+"
+
+[node name="Ingredients" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1567513034]
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients" unique_id=135115104]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Ingredients/Ingredient" unique_id=1174624256]
+layout_mode = 2
+texture = ExtResource("2_s6ito")
+stretch_mode = 5
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients/Ingredient" unique_id=1011071364]
+layout_mode = 2
+theme = ExtResource("1_jwtmn")
+text = "Bun"
+horizontal_alignment = 1
+
+[node name="Ingredient4" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients" unique_id=742850642]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Ingredients/Ingredient4" unique_id=1156003672]
+layout_mode = 2
+texture = ExtResource("3_3jtkh")
+stretch_mode = 5
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients/Ingredient4" unique_id=1571454500]
+layout_mode = 2
+theme = ExtResource("1_jwtmn")
+text = "Lettuce"
+horizontal_alignment = 1
+
+[node name="Ingredient2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients" unique_id=811385899]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Ingredients/Ingredient2" unique_id=491033151]
+layout_mode = 2
+texture = ExtResource("4_3gnpb")
+stretch_mode = 5
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients/Ingredient2" unique_id=1787207622]
+layout_mode = 2
+theme = ExtResource("1_jwtmn")
+text = "Patty"
+horizontal_alignment = 1
+
+[node name="Ingredient3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients" unique_id=1409430263]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Ingredients/Ingredient3" unique_id=2142565451]
+layout_mode = 2
+texture = ExtResource("5_h7tsp")
+stretch_mode = 5
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients/Ingredient3" unique_id=848026104]
+layout_mode = 2
+theme = ExtResource("1_jwtmn")
+text = "Cheese"
+horizontal_alignment = 1
+
+[node name="Heading2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=532427142]
+layout_mode = 2
+theme = ExtResource("1_jwtmn")
+theme_override_font_sizes/font_size = 22
+text = "
+2. Basic Terms"
+
+[node name="Content2" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1532439451]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_jwtmn")
+text = "
+You stack ingredients for an order. Burgers, Sandwiches, and anything else you serve are \"stacks\"."
+fit_content = true
+autowrap_mode = 2

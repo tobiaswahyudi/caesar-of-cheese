@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://d1xgi3s08q84o"]
+
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="1_m6pq6"]
+
+[node name="IntroPage" type="Control" unique_id=518672617]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m6pq6")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1980996823]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1520183778]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2137257444]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sandwich Names
+"
+horizontal_alignment = 1
+
+[node name="Heading1" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1666657062]
+layout_mode = 2
+theme = ExtResource("1_m6pq6")
+theme_override_font_sizes/font_size = 22
+text = "1. Base Sandwiches"
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer" unique_id=118631605]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_m6pq6")
+text = "
+Any number of patties between two buns is a Hamburger.
+"
+autowrap_mode = 2
+
+[node name="Ingredients2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1975934757]
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients2" unique_id=1029776870]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients2/Ingredient" unique_id=39939848]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients2/Ingredient" unique_id=1365029246]
+layout_mode = 2
+theme = ExtResource("1_m6pq6")
+text = "Hamburger"
+horizontal_alignment = 1
+
+[node name="Ingredient2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients2" unique_id=741567302]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients2/Ingredient2" unique_id=113286798]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients2/Ingredient2" unique_id=1367180268]
+layout_mode = 2
+theme = ExtResource("1_m6pq6")
+text = "Triple Hamburger"
+horizontal_alignment = 1
+
+[node name="Content2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=718401220]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_m6pq6")
+text = "
+Multiples of patty and cheese between two buns is a Cheeseburger.
+"
+autowrap_mode = 2
+
+[node name="Ingredients3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=977229996]
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients3" unique_id=1976640074]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient" unique_id=1576427265]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]res://img/cheese.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient" unique_id=720688145]
+layout_mode = 2
+theme = ExtResource("1_m6pq6")
+text = "Cheeseburger
+"
+horizontal_alignment = 1
+
+[node name="Ingredient2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients3" unique_id=276360762]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient2" unique_id=1019408389]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/patty.png[/img][img=16]res://img/cheese.png[/img][img=16]res://img/patty.png[/img][img=16]res://img/cheese.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient2" unique_id=1224894926]
+layout_mode = 2
+theme = ExtResource("1_m6pq6")
+text = "Double
+Cheeseburger"
+horizontal_alignment = 1

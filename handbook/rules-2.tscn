@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://bq0txkd5xoje6"]
+
+[ext_resource type="Theme" uid="uid://l1tjqsot460e" path="res://materials/monospace-font.tres" id="1_guqmu"]
+
+[node name="IntroPage" type="Control" unique_id=518672617]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_guqmu")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1980996823]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1520183778]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer" unique_id=118631605]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_guqmu")
+text = "Both ways of stacking patty and cheese work."
+autowrap_mode = 2
+
+[node name="Ingredients3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=977229996]
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients3" unique_id=1976640074]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient" unique_id=1576427265]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]res://img/cheese.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient" unique_id=720688145]
+layout_mode = 2
+theme = ExtResource("1_guqmu")
+text = "Cheeseburger
+"
+horizontal_alignment = 1
+
+[node name="Ingredient2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients3" unique_id=276360762]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient2" unique_id=1019408389]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/cheese.png[/img][img=16]res://img/patty.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients3/Ingredient2" unique_id=1224894926]
+layout_mode = 2
+theme = ExtResource("1_guqmu")
+text = "also a
+Cheeseburger"
+horizontal_alignment = 1
+
+[node name="Content2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=824765192]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_guqmu")
+text = "
+However for double (or more) Cheeseburgers, stacking may not be mixed.
+"
+autowrap_mode = 2
+
+[node name="Ingredients4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=485698347]
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients4" unique_id=2037093212]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients4/Ingredient" unique_id=473410368]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]res://img/cheese.png[/img][img=16]uid://c16bsyfnocsd7[/img][img=16]res://img/cheese.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients4/Ingredient" unique_id=931660084]
+layout_mode = 2
+theme = ExtResource("1_guqmu")
+text = "Double
+Cheeseburger"
+horizontal_alignment = 1
+
+[node name="Ingredient2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients4" unique_id=1928134844]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients4/Ingredient2" unique_id=374931476]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/cheese.png[/img][img=16]res://img/patty.png[/img][img=16]res://img/cheese.png[/img][img=16]res://img/patty.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients4/Ingredient2" unique_id=715813455]
+layout_mode = 2
+theme = ExtResource("1_guqmu")
+text = "Also a Double
+Cheeseburger"
+horizontal_alignment = 1
+
+[node name="Content3" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1870321818]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme = ExtResource("1_guqmu")
+autowrap_mode = 2
+
+[node name="Ingredients5" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=220891814]
+layout_mode = 2
+alignment = 1
+
+[node name="Ingredient2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ingredients5" unique_id=670609846]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentStackImgDisplay" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Ingredients5/Ingredient2" unique_id=567459689]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_mode = 2
+bbcode_enabled = true
+text = "[img=16]uid://b6drcx0m4m2wn[/img][img=16]res://img/cheese.png[/img][img=16]res://img/patty.png[/img][img=16]res://img/patty.png[/img][img=16]res://img/cheese.png[/img][img=16]uid://b6drcx0m4m2wn[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/Ingredients5/Ingredient2" unique_id=1379658592]
+layout_mode = 2
+theme = ExtResource("1_guqmu")
+text = "NOT a Double
+Cheeseburger"
+horizontal_alignment = 1
