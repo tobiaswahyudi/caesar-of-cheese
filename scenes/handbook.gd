@@ -60,6 +60,9 @@ func next_page():
 	current_right_page_index += 2
 	render()
 
+func open():
+	visible = true
+
 func _ready() -> void:
 	render()
 	prev_page_button.pressed.connect(prev_page)
@@ -67,9 +70,7 @@ func _ready() -> void:
 	close_button.pressed.connect(func():
 		visible = false
 	)
-	open_button.pressed.connect(func():
-		visible = true
-	)
+	open_button.pressed.connect(open)
 
 @export_tool_button("Prev page") var a = prev_page
 @export_tool_button("Next page") var b = next_page

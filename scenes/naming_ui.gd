@@ -3,6 +3,8 @@ extends Control
 
 @export_group("Managers")
 @export var burger_manager: BurgerManager
+@export var handbook: Handbook
+@export var preview_popup: PreviewPopup
 
 @export_group("Buttons")
 @export var single_ingredient_button: Button
@@ -13,6 +15,7 @@ extends Control
 @export var burger_button: Button
 @export var undo_or_back_button: Button
 @export var done_button: Button
+@export var handbook_button: Button
 @export var repeat_buttons: Array[Button]
 
 var is_splitting: bool = false
@@ -55,10 +58,10 @@ var img_path_map: Dictionary[String, String]
 @export var current_stack: String
 
 var total_bst: Parser.BST
-
 var bst_history: Array[Parser.BST] = []
+var overall_stack_name: String = ""
 
-var done_naming: bool:
+var is_done_naming: bool:
 	get():
 		return current_stack == ""
 
@@ -78,23 +81,23 @@ func make_stack_bbstring(stack: String, img_size: int = 40, break_lines: bool = 
 	return total_string
 
 func eval_button_state() -> void:
-	single_ingredient_button.disabled = done_naming or is_splitting or not Parser.check_rule_single(current_stack)
-	cheeseburger_button.disabled = done_naming or is_splitting or not Parser.check_rule_cheeseburger(current_stack)
-	cheese_sandwich_button.disabled = done_naming or is_splitting or not Parser.check_rule_cheese_sandwich(current_stack)
-	hamburger_button.disabled = done_naming or is_splitting or not Parser.check_rule_hamburger(current_stack)
-	lettuce_button.disabled = done_naming or is_splitting or not Parser.check_rule_lettuce(current_stack)
-	burger_button.disabled = done_naming or is_splitting or not Parser.check_rule_burger(current_stack)
+	single_ingredient_button.disabled = is_done_naming or is_splitting or not Parser.check_rule_single(current_stack)
+	cheeseburger_button.disabled = is_done_naming or is_splitting or not Parser.check_rule_cheeseburger(current_stack)
+	cheese_sandwich_button.disabled = is_done_naming or is_splitting or not Parser.check_rule_cheese_sandwich(current_stack)
+	hamburger_button.disabled = is_done_naming or is_splitting or not Parser.check_rule_hamburger(current_stack)
+	lettuce_button.disabled = is_done_naming or is_splitting or not Parser.check_rule_lettuce(current_stack)
+	burger_button.disabled = is_done_naming or is_splitting or not Parser.check_rule_burger(current_stack)
 
-	initiate_split_button.disabled = done_naming or is_splitting
+	initiate_split_button.disabled = is_done_naming or is_splitting
 	# undo_button.disabled = len(bst_history) == 0
 
 	undo_or_back_label.text = back_label if len(bst_history) == 0 else undo_label
 
-	done_button.disabled = not done_naming
+	done_button.disabled = not is_done_naming
 	for idx in range(len(repeat_buttons)):
 		var button = repeat_buttons[idx]
 		var repeat_count = idx + 2
-		button.disabled = done_naming or not Parser.check_rule_repeat(current_stack, repeat_count)
+		button.disabled = is_done_naming or not Parser.check_rule_repeat(current_stack, repeat_count)
 
 	split_controls_container.visible = is_splitting
 	# split_left_button.disabled = never
@@ -117,13 +120,14 @@ func update_displays() -> void:
 		current_stack_label.text = done_editing_label
 
 	var count: Array[int] = [0]
-	stack_name_label.text = total_bst.get_name(func(stack):
+	overall_stack_name = total_bst.get_name(func(stack):
 		count[0] += 1
 		var stack_bbstring = make_stack_bbstring(stack, 24, false)
 		if count[0] == 1:
 			return highlight_bbstring(stack_bbstring)
 		return stack_bbstring
 	)
+	stack_name_label.text = overall_stack_name
 
 func eval_state() -> void:
 	eval_button_state()
@@ -166,6 +170,7 @@ func undo_history() -> void:
 	if len(bst_history) == 0:
 		visible = false
 		burger_manager.stacker.pop_top()
+		return
 	var back_hist = bst_history.pop_back()
 	total_bst = back_hist
 	eval_current_from_bst()
@@ -189,6 +194,13 @@ func _ready() -> void:
 	cheeseburger_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
 	cheese_sandwich_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
 	hamburger_button.pressed.connect(make_button_click_action(Parser.do_resolve_base_burger))
+	handbook_button.pressed.connect(func():
+		handbook.open()
+	)
+	done_button.pressed.connect(func():
+		visible = false
+		preview_popup.open(overall_stack_name)
+	)
 
 	# lettuce_button.pressed.connect()
 	burger_button.pressed.connect(make_button_click_action(Parser.do_one_step_burger))

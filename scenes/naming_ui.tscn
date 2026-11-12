@@ -30,7 +30,7 @@ texture_margin_bottom = 16.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="NamingUi" type="Control" unique_id=1326688869 node_paths=PackedStringArray("single_ingredient_button", "cheeseburger_button", "cheese_sandwich_button", "hamburger_button", "lettuce_button", "burger_button", "undo_or_back_button", "done_button", "repeat_buttons", "initiate_split_button", "split_controls_container", "split_left_button", "split_right_button", "execute_split_button", "cancel_split_button", "total_stack_label", "current_stack_label", "stack_name_label", "undo_or_back_label")]
+[node name="NamingUi" type="Control" unique_id=1326688869 node_paths=PackedStringArray("single_ingredient_button", "cheeseburger_button", "cheese_sandwich_button", "hamburger_button", "lettuce_button", "burger_button", "undo_or_back_button", "done_button", "handbook_button", "repeat_buttons", "initiate_split_button", "split_controls_container", "split_left_button", "split_right_button", "execute_split_button", "cancel_split_button", "total_stack_label", "current_stack_label", "stack_name_label", "undo_or_back_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,6 +46,7 @@ lettuce_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/
 burger_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/B")
 undo_or_back_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/UndoBackButton")
 done_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Done")
+handbook_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/OpenRulebook")
 repeat_buttons = [NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/2"), NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/3"), NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/4")]
 initiate_split_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid2/Split")
 split_controls_container = NodePath("PanelContainer/MarginContainer/HBoxContainer/CurrentStack/HBoxContainer2/SplitControlsContainer")

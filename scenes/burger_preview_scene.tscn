@@ -10,7 +10,7 @@ bg_color = Color(0, 0, 0, 0.4)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4vm8"]
 bg_color = Color(0.3137255, 0.3137255, 0.3137255, 1)
 
-[node name="BurgerPreviewScene" type="Control" unique_id=837683222 node_paths=PackedStringArray("close_buttons", "burger_match_container", "burger_mismatch_container", "next_customer_button", "explain_naming_button", "burger_img_displays", "burger_name_displays", "target_name_displays")]
+[node name="BurgerPreviewScene" type="Control" unique_id=837683222 node_paths=PackedStringArray("close_buttons", "burger_match_container", "burger_mismatch_container", "burger_mismatch_label", "next_customer_button", "explain_naming_button", "burger_img_displays", "burger_name_displays", "target_name_displays")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,8 +19,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y5t83")
 close_buttons = [NodePath("PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2/Nope"), NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2/Nope")]
+default_mismatch_string = "The customer says: \"Hey, this looks like a"
+assigned_mismatch_string = "The customer says: \"Ok, so this is a"
 burger_match_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/GoodMatch")
 burger_mismatch_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch")
+burger_mismatch_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch/MismatchLabel")
 next_customer_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/GoodMatch/HBoxContainer2/Done")
 explain_naming_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/BadMatch/HBoxContainer2/Explain")
 burger_img_displays = NodePath("PanelContainer/MarginContainer/VBoxContainer/CurrentStackImgDisplay")
@@ -187,7 +190,7 @@ layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Label3" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch" unique_id=2011216526]
+[node name="MismatchLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/BadMatch" unique_id=2011216526]
 clip_contents = false
 custom_minimum_size = Vector2(49, 0)
 layout_mode = 2

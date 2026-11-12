@@ -305,10 +305,12 @@ burger_manager = NodePath("../SubViewportContainer/TextureViewport/BurgerView")
 naming_ui = NodePath("../NamingUi")
 confirm_ui = NodePath("../BurgerConfirmScene")
 
-[node name="NamingUi" parent="." unique_id=1326688869 node_paths=PackedStringArray("burger_manager") instance=ExtResource("13_trceg")]
+[node name="NamingUi" parent="." unique_id=1326688869 node_paths=PackedStringArray("burger_manager", "handbook", "preview_popup") instance=ExtResource("13_trceg")]
 visible = false
 layout_mode = 1
 burger_manager = NodePath("../SubViewportContainer/TextureViewport/BurgerView")
+handbook = NodePath("../HandbookScene")
+preview_popup = NodePath("../BurgerPreviewScene")
 
 [node name="HandbookScene" parent="." unique_id=1338868428 node_paths=PackedStringArray("open_button") instance=ExtResource("12_trceg")]
 visible = false

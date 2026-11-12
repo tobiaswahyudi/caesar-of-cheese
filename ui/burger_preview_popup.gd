@@ -10,8 +10,13 @@ extends Control
 @export var confirm_ui: ConfirmPopup
 @export var close_buttons: Array[Button]
 
+@export_multiline() var default_mismatch_string: String
+@export_multiline() var assigned_mismatch_string: String
+
 @export var burger_match_container: Container
 @export var burger_mismatch_container: Container
+
+@export var burger_mismatch_label: RichTextLabel
 
 @export var next_customer_button: BaseButton
 @export var explain_naming_button: BaseButton
@@ -23,10 +28,10 @@ extends Control
 @export_group("Runtime")
 @export var target_name: String
 
-func open():
+func open(assigned_name: String = ""):
 	visible = true
 	var bstack = burger_manager.stacker.stack_string
-	var stack_name: String = Parser.greedy_parse(bstack).get_name()
+	var stack_name: String = assigned_name if len(assigned_name) > 0 else Parser.greedy_parse(bstack).get_name()
 	var stack_imgs = naming_ui.make_stack_bbstring(burger_manager.stacker.stack_string, 16)
 
 	print("Target name ", target_name, " vs auto name ", stack_name)
@@ -40,6 +45,7 @@ func open():
 		burger_match_container.visible = true
 		burger_mismatch_container.visible = false
 	else:
+		burger_mismatch_label.text = assigned_mismatch_string if len(assigned_name) > 0 else default_mismatch_string
 		burger_match_container.visible = false
 		burger_mismatch_container.visible = true
 
