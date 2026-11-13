@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://btpcjd5qqlwil"]
 
 [ext_resource type="Shader" uid="uid://c41251wk8l4vc" path="res://shader/dither.gdshader" id="1_a8y0u"]
+[ext_resource type="Script" uid="uid://5gy17n40txqo" path="res://scripts/gameplay_loop.gd" id="1_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://cfe81yf5q7t4s" path="res://scenes/burger_view.tscn" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://c1vwtgl1k4jr5" path="res://img/customer.png" id="2_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://bojb1c3qc2h4b" path="res://img/bubble.png" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://2s881mr80vqj" path="res://scenes/Ingredient_2d.tscn" id="6_tefeu"]
 [ext_resource type="Theme" uid="uid://ct3uyhalnf088" path="res://ui/button_theme_2.tres" id="7_ya4ey"]
-[ext_resource type="Script" uid="uid://doa2ilwpvpgga" path="res://scripts/say_name.gd" id="8_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://fdd35k3ew65n" path="res://scenes/burger_preview_scene.tscn" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://k2h381n0xo37" path="res://scenes/burger_confirm_scene.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://cwi42op8d5nmp" path="res://scenes/handbook.tscn" id="12_trceg"]
@@ -19,26 +19,31 @@ shader_parameter/u_dither_size = 1
 [sub_resource type="ViewportTexture" id="ViewportTexture_o6xl0"]
 viewport_path = NodePath("SubViewportContainer/TextureViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ya4ey"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_eb6dy"]
 viewport_path = NodePath("HBoxContainer/Button0/CenterContainer/VBoxContainer/Ingredient2d/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_eb6dy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_trceg"]
 viewport_path = NodePath("HBoxContainer/Button1/CenterContainer/VBoxContainer/Ingredient2d/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_trceg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_a8y0u"]
 viewport_path = NodePath("HBoxContainer/Button2/CenterContainer/VBoxContainer/Ingredient2d/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a8y0u"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_jkv2x"]
 viewport_path = NodePath("HBoxContainer/Button3/CenterContainer/VBoxContainer/Ingredient2d/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jkv2x"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_jbj1t"]
 viewport_path = NodePath("HBoxContainer/Button4/CenterContainer/VBoxContainer/Ingredient2d/SubViewport")
 
-[node name="Control" type="Control" unique_id=2014543929]
+[node name="Control" type="Control" unique_id=2014543929 node_paths=PackedStringArray("customer_label", "preview_modal")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+script = ExtResource("1_ya4ey")
+customer_label = NodePath("SpeechBubble/Label")
+customer_label_string_prefix = "I'd like a"
+customer_label_string_suffix = "please."
+preview_modal = NodePath("BurgerPreviewScene")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1255632699]
 material = SubResource("ShaderMaterial_jkv2x")
@@ -88,7 +93,7 @@ offset_bottom = 345.0
 texture = ExtResource("3_tbgi4")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="SpeechBubble" unique_id=34052215 node_paths=PackedStringArray("burger_manager")]
+[node name="Label" type="Label" parent="SpeechBubble" unique_id=34052215]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 69.0
@@ -100,10 +105,6 @@ text = "I'd like a Double Double Cheeseburger on Burger Burger please. With Lett
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-script = ExtResource("8_ya4ey")
-prefix = "Now that's what I call a "
-suffix = "!"
-burger_manager = NodePath("../../SubViewportContainer/TextureViewport/BurgerView")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=423460041]
 layout_mode = 0
@@ -132,7 +133,7 @@ alignment = 1
 [node name="Ingredient2d" parent="HBoxContainer/Button0/CenterContainer/VBoxContainer" unique_id=1496093244 instance=ExtResource("6_tefeu")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = SubResource("ViewportTexture_ya4ey")
+texture = SubResource("ViewportTexture_eb6dy")
 
 [node name="Label" type="Label" parent="HBoxContainer/Button0/CenterContainer/VBoxContainer" unique_id=1882478863]
 layout_mode = 2
@@ -160,7 +161,7 @@ alignment = 1
 [node name="Ingredient2d" parent="HBoxContainer/Button1/CenterContainer/VBoxContainer" unique_id=1250951743 instance=ExtResource("6_tefeu")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = SubResource("ViewportTexture_eb6dy")
+texture = SubResource("ViewportTexture_trceg")
 ingredient_index = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/Button1/CenterContainer/VBoxContainer" unique_id=779434391]
@@ -189,7 +190,7 @@ alignment = 1
 [node name="Ingredient2d" parent="HBoxContainer/Button2/CenterContainer/VBoxContainer" unique_id=1832639493 instance=ExtResource("6_tefeu")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = SubResource("ViewportTexture_trceg")
+texture = SubResource("ViewportTexture_a8y0u")
 ingredient_index = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/Button2/CenterContainer/VBoxContainer" unique_id=1507190018]
@@ -218,7 +219,7 @@ alignment = 1
 [node name="Ingredient2d" parent="HBoxContainer/Button3/CenterContainer/VBoxContainer" unique_id=438262831 instance=ExtResource("6_tefeu")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = SubResource("ViewportTexture_a8y0u")
+texture = SubResource("ViewportTexture_jkv2x")
 ingredient_index = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Button3/CenterContainer/VBoxContainer" unique_id=1204298846]
@@ -247,7 +248,7 @@ alignment = 1
 [node name="Ingredient2d" parent="HBoxContainer/Button4/CenterContainer/VBoxContainer" unique_id=1841291598 instance=ExtResource("6_tefeu")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = SubResource("ViewportTexture_jkv2x")
+texture = SubResource("ViewportTexture_jbj1t")
 ingredient_index = 4
 
 [node name="Label" type="Label" parent="HBoxContainer/Button4/CenterContainer/VBoxContainer" unique_id=730893645]

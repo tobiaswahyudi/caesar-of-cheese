@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Type="*uid://goqn27kgm16g"
 Parser="*uid://b7gbv1mh548oa"
+Generator="*uid://cypyxcepjvqe1"
 
 [display]
 

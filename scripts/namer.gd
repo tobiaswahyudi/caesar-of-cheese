@@ -136,7 +136,7 @@ class BSTBurger extends BST:
 		if children[0].is_patty_cheese_sequence():
 			var split = children[0].get_name(unres_func).split(" ")
 			var tuples = split.slice(0, len(split) - 3) # "Patty and Cheese" or "Cheese and Patty"
-			return " ".join(tuples) + " Cheeseburger"
+			return (" ".join(tuples) + " Cheeseburger").trim_prefix(" ")
 		if children[0].is_cheese_sequence():
 			return children[0].get_name(unres_func) + " Sandwich"
 		return children[0].get_name(unres_func) + " Burger"
@@ -214,6 +214,8 @@ func do_rule_burger(string: String) -> String:
 
 func check_rule_repeat(string: String, tgt_repeat: int) -> bool:
 	var strlen = len(string)
+	if strlen == 0:
+		return true
 	if strlen % tgt_repeat != 0:
 		return false
 	var all_good: bool = true

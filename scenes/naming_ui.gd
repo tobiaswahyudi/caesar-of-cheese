@@ -33,6 +33,7 @@ var split_pos: int = 1
 @export var current_stack_label: RichTextLabel
 @export var stack_name_label: RichTextLabel
 @export var current_stack_label_width: int
+@export var target_stack_name_label: RichTextLabel
 
 @export_group("Display Configs")
 @export_subgroup("Strings")
@@ -60,6 +61,7 @@ var img_path_map: Dictionary[String, String]
 var total_bst: Parser.BST
 var bst_history: Array[Parser.BST] = []
 var overall_stack_name: String = ""
+var target_name: String = ""
 
 var is_done_naming: bool:
 	get():
@@ -128,6 +130,7 @@ func update_displays() -> void:
 		return stack_bbstring
 	)
 	stack_name_label.text = overall_stack_name
+	target_stack_name_label.text = target_name
 
 func eval_state() -> void:
 	eval_button_state()
