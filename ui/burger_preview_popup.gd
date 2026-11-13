@@ -34,7 +34,7 @@ func open(assigned_name: String = ""):
 	var stack_name: String = assigned_name if len(assigned_name) > 0 else Parser.greedy_parse(bstack).get_name()
 	var stack_imgs = naming_ui.make_stack_bbstring(burger_manager.stacker.stack_string, 16)
 
-	print("Target name ", target_name, " vs auto name ", stack_name)
+	print("Target name |", target_name, "| vs stack name |", stack_name, "| match? ", target_name == stack_name)
 
 	burger_img_displays.text = stack_imgs
 	for label in burger_name_displays:
@@ -64,3 +64,4 @@ func _ready() -> void:
 		close()
 		naming_ui.open(burger_manager.stacker.stack_string)
 	)
+	next_customer_button.pressed.connect(close)

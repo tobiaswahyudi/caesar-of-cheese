@@ -62,7 +62,7 @@ func generate_structurally(p_len: int) -> Array[String]:
 
 		var gen_left: Array[String] = generate_structurally(leftCount)
 		var gen_right: Array[String] = generate_structurally(rightCount)
-		var l_and: Array[String] = ['And']
+		var l_and: Array[String] = ['and']
 
 		return gen_left + l_and + gen_right;
 	return []

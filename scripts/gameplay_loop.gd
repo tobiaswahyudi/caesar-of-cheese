@@ -31,3 +31,4 @@ func init_loop():
 
 func _ready() -> void:
 	init_loop()
+	preview_modal.next_customer_button.pressed.connect(init_loop)

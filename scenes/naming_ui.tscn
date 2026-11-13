@@ -450,6 +450,7 @@ layout_mode = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 theme = ExtResource("11_3lqn1")
+disabled = true
 autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Buttons/ButtonsGrid/L" unique_id=2025445578]
