@@ -41,6 +41,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("1_ya4ey")
 burger_manager = NodePath("SubViewportContainer/TextureViewport/BurgerView")
+name_complexity = 6
 customer_label = NodePath("SpeechBubble/Label")
 customer_label_string_prefix = "I'd like a"
 customer_label_string_suffix = "please."

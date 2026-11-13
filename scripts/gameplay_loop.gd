@@ -14,30 +14,22 @@ extends Control
 @export var preview_modal: PreviewPopup
 @export var naming_ui: NamingUI
 
-var prev_burger_name: String = ""
+var burger_name: String = ""
 
 func init_loop():
 	burger_manager.stacker.clear()
 
 	# Get random burger name. Have to be different from current name
 	# Actually not that uncommon.
-	var random_name: String = prev_burger_name
-	while random_name == prev_burger_name:
-		random_name = Generator.solve_name(Generator.generate_structurally(name_complexity))
-
-	prev_burger_name = random_name
-
-	# Make sure it's a burger
-	if not random_name.ends_with(" Burger"):
-		random_name += ' Burger'
+	burger_name = Generator.make_satisfactory_name(name_complexity, burger_name)
 	# Assign burger name to customer
-	customer_label.text = " ".join([customer_label_string_prefix, random_name, customer_label_string_suffix])
+	customer_label.text = " ".join([customer_label_string_prefix, burger_name, customer_label_string_suffix])
 	print("|" + customer_label_string_prefix + "|")
-	print("|" + random_name + "|")
+	print("|" + burger_name + "|")
 	print("|" + customer_label_string_suffix + "|")
 	# Assign burger name to preview modal
-	preview_modal.target_name = random_name
-	naming_ui.target_name = random_name
+	preview_modal.target_name = burger_name
+	naming_ui.target_name = burger_name
 	# I think thats it
 
 func _ready() -> void:

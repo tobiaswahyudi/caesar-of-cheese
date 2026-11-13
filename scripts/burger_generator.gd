@@ -39,9 +39,9 @@ func generate_structurally(p_len: int) -> Array[String]:
 
 	if p_len >= 3:
 		var rand = randf();
-		if rand < 0.2:
+		if rand < 0.35:
 			action = "cut";
-		elif rand < 0.6:
+		elif rand < 0.65:
 			action = "multiplier";
 		else:
 			action = "burger";
@@ -70,3 +70,30 @@ func generate_structurally(p_len: int) -> Array[String]:
 
 func solve_name(arr: Array[String]) -> String:
 	return ' '.join(arr)
+
+func make_satisfactory_name(name_complexity: int, prev_name: String) -> String:
+	var random_name: String
+	while true:
+		var random_name_parts = generate_structurally(name_complexity)
+		random_name = solve_name(random_name_parts)
+		if random_name == prev_name:
+			continue
+		# Let's just disallow "Patty Burger" since it may result in unsolveables
+		if RegEx.create_from_string("Patty Burger").search(random_name) != null:
+			continue
+		# Check number of multipliers. We cannot have too many.
+		var multiplier_count = 0
+		for part in random_name_parts:
+			for mult in multipliers:
+				if part == mult:
+					multiplier_count += 1
+
+		if multiplier_count > 3:
+			continue
+		break
+
+	# Make sure it's a burger and never a split-and
+	if not random_name.ends_with(" Burger"):
+		random_name += ' Burger'
+
+	return random_name
