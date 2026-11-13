@@ -34,12 +34,13 @@ viewport_path = NodePath("HBoxContainer/Button3/CenterContainer/VBoxContainer/In
 [sub_resource type="ViewportTexture" id="ViewportTexture_jkv2x"]
 viewport_path = NodePath("HBoxContainer/Button4/CenterContainer/VBoxContainer/Ingredient2d/SubViewport")
 
-[node name="Control" type="Control" unique_id=2014543929 node_paths=PackedStringArray("customer_label", "preview_modal", "naming_ui")]
+[node name="Control" type="Control" unique_id=2014543929 node_paths=PackedStringArray("burger_manager", "customer_label", "preview_modal", "naming_ui")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("1_ya4ey")
+burger_manager = NodePath("SubViewportContainer/TextureViewport/BurgerView")
 customer_label = NodePath("SpeechBubble/Label")
 customer_label_string_prefix = "I'd like a"
 customer_label_string_suffix = "please."

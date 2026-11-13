@@ -179,6 +179,7 @@ func undo_history() -> void:
 	eval_current_from_bst()
 
 func open(string_stack: String) -> void:
+	bst_history = []
 	visible = true
 	total_stack = string_stack
 	current_stack = total_stack

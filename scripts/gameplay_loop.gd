@@ -1,5 +1,7 @@
 extends Control
 
+@export var burger_manager: BurgerManager
+
 @export_group("Params")
 @export var name_complexity: int = 5
 
@@ -12,9 +14,18 @@ extends Control
 @export var preview_modal: PreviewPopup
 @export var naming_ui: NamingUI
 
+var prev_burger_name: String = ""
+
 func init_loop():
-	# Get random burger name
-	var random_name: String = Generator.solve_name(Generator.generate_structurally(name_complexity))
+	burger_manager.stacker.clear()
+
+	# Get random burger name. Have to be different from current name
+	# Actually not that uncommon.
+	var random_name: String = prev_burger_name
+	while random_name == prev_burger_name:
+		random_name = Generator.solve_name(Generator.generate_structurally(name_complexity))
+
+	prev_burger_name = random_name
 
 	# Make sure it's a burger
 	if not random_name.ends_with(" Burger"):

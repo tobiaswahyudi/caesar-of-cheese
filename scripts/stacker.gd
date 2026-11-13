@@ -60,6 +60,11 @@ func pop_top():
 	selected_node = last_child
 	remove_current_selected_ingredient()
 
+func clear():
+	var children: Array[Node] = get_children()
+	for n_node in children:
+		n_node.queue_free()
+
 func _ready() -> void:
 	camera.position.y = starting_camera_height
 
@@ -77,3 +82,5 @@ func _physics_process(_delta: float) -> void:
 	if stack_height > camera_displace_min_height:
 		var cam_displace = (stack_height - camera_displace_min_height) * camera_displace_mult
 		camera.position.y = cam_displace + starting_camera_height
+	else:
+		camera.position.y = starting_camera_height
